@@ -11,7 +11,9 @@ import SwiftUI
 struct LastReservationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                LoginView()
+            }
         }
     }
 }
