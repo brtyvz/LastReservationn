@@ -12,6 +12,8 @@ struct LoginView: View {
     @State var maxCircleHeight:CGFloat = 0
     @State var password:String = ""
     @State var mail: String = ""
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         
         VStack{
@@ -70,7 +72,7 @@ struct LoginView: View {
                 //Next Button
                 
                 Button {
-                    
+                    viewModel.login(email: mail, password: password)
                 } label: {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 24,weight: .bold))

@@ -33,3 +33,5 @@ struct CustomInputFields_Previews: PreviewProvider {
         CustomInputFields(image: "envelope", placeholderText: "mail", text: .constant(""))
     }
 }
+
+

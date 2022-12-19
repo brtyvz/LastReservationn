@@ -14,7 +14,8 @@ struct RegistrationView: View {
      @State var password:String = ""
      @State var passwordAgain:String = ""
      @State var mail: String = ""
-     
+    @State var  number:String = ""
+    @EnvironmentObject var viewModel:AuthViewModel
     var body: some View {
         
         VStack{
@@ -57,9 +58,11 @@ struct RegistrationView: View {
                         .padding(.bottom,20)
                     
                     VStack(spacing:40) {
+                        CustomInputFields(image: "textformat.123", placeholderText: "Öğrenci Numaranız", text: $number)
                         CustomInputFields(image: "envelope", placeholderText: "Email", text: $mail)
                         CustomInputFields(image: "lock", placeholderText: "Şifre", text: $password)
                        CustomInputFields(image: "lock", placeholderText: "Şifre Tekrar", text: $passwordAgain)
+                       
                     }
                
 
@@ -80,7 +83,7 @@ struct RegistrationView: View {
                     //Next Button
                     
                     Button {
-                        
+                        viewModel.register(email: mail, password: password,number: number)
                     } label: {
                         Image(systemName: "arrow.right")
                             .font(.system(size: 24,weight: .bold))
