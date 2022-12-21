@@ -20,6 +20,10 @@
 		5B4A2EDE294E232800A9AD4A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDD294E232800A9AD4A /* FirebaseFirestoreSwift */; };
 		5B4A2EE0294E232800A9AD4A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDF294E232800A9AD4A /* FirebaseStorage */; };
 		5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */; };
+		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
+		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
+		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
+		5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7490A129539B1D007F67ED /* CalendarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		5B4A2ED4294E0FC300A9AD4A /* CustomInputFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputFields.swift; sourceTree = "<group>"; };
 		5B4A2ED6294E20CD00A9AD4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		5B74909829539626007F67ED /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		5B7490A129539B1D007F67ED /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,10 @@
 		5B4A2EC9294DD7D100A9AD4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5B7490A0295399E9007F67ED /* Calendar */,
+				5B74909D295399C1007F67ED /* Main */,
+				5B74909C295399B8007F67ED /* Setting */,
+				5B749097295393F9007F67ED /* Tab */,
 				5B4A2ECD294DD94E00A9AD4A /* Authentication */,
 				5B4A2ECC294DD84500A9AD4A /* Components */,
 			);
@@ -152,6 +164,38 @@
 				5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B749097295393F9007F67ED /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				5B74909829539626007F67ED /* MainTabView.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		5B74909C295399B8007F67ED /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5B74909E295399E3007F67ED /* SettingView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5B74909D295399C1007F67ED /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				5B74909A295397CE007F67ED /* MainMenuView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5B7490A0295399E9007F67ED /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5B7490A129539B1D007F67ED /* CalendarView.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,10 +278,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
 				5B4A2ED1294DDB4400A9AD4A /* LoginView.swift in Sources */,
 				5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */,
+				5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */,
+				5B74909F295399E3007F67ED /* SettingView.swift in Sources */,
 				5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */,
 				5B4A2EBB294DD7B100A9AD4A /* LastReservationApp.swift in Sources */,
+				5B74909929539626007F67ED /* MainTabView.swift in Sources */,
 				5B4A2ED5294E0FC300A9AD4A /* CustomInputFields.swift in Sources */,
 				5B4A2ED3294DDB6F00A9AD4A /* RegistrationView.swift in Sources */,
 			);

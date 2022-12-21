@@ -17,7 +17,7 @@ struct ContentView: View {
             }
          //user logged in
             else {
-                MainView
+                MainTabView()
             }
         }
     }
