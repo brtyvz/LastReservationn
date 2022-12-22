@@ -17,7 +17,7 @@ struct ContentView: View {
             }
          //user logged in
             else {
-                MainTabView()
+                MainView
             }
         }
     }
@@ -36,7 +36,13 @@ struct ContentView_Previews: PreviewProvider {
 extension ContentView {
    
     private var MainView: some View {
-        Text("Logged in")
+        VStack {
+            Button {
+                viewModel.signOut()
+            } label: {
+                Text("Çıkış Yap")
+            }
+        }
     }
     
     

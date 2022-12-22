@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct SettingView: View {
+    @EnvironmentObject var viewModel:AuthViewModel
     var body: some View {
-        Text("Calendar")
+        NavigationView {
+            Form {
+                Button {
+                    viewModel.signOut()
+                } label: {
+                    Text("Çıkış Yap")
+                }
+
+            }
+            .navigationTitle(Text("Ayarlar"))
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
