@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B16C7782980797F0083D7CE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C7772980797F0083D7CE /* User.swift */; };
+		5B16C77A298085000083D7CE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C779298085000083D7CE /* UserService.swift */; };
+		5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C77D29855BF30083D7CE /* SideMenuVİewModel.swift */; };
 		5B4A2EBB294DD7B100A9AD4A /* LastReservationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBA294DD7B100A9AD4A /* LastReservationApp.swift */; };
 		5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBC294DD7B200A9AD4A /* ContentView.swift */; };
 		5B4A2EBF294DD7B300A9AD4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBE294DD7B300A9AD4A /* Assets.xcassets */; };
@@ -24,9 +27,14 @@
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
 		5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7490A129539B1D007F67ED /* CalendarView.swift */; };
+		5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */; };
+		5BD61731295475680022C98E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD61730295475680022C98E /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B16C7772980797F0083D7CE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5B16C779298085000083D7CE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		5B16C77D29855BF30083D7CE /* SideMenuVİewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideMenuVİewModel.swift"; sourceTree = "<group>"; };
 		5B4A2EB7294DD7B100A9AD4A /* LastReservation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastReservation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4A2EBA294DD7B100A9AD4A /* LastReservationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastReservationApp.swift; sourceTree = "<group>"; };
 		5B4A2EBC294DD7B200A9AD4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,6 +49,8 @@
 		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		5B7490A129539B1D007F67ED /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
+		5BD61730295475680022C98E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +68,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B484B28298682B80035B61C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5B16C77D29855BF30083D7CE /* SideMenuVİewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5B4A2EAE294DD7B100A9AD4A = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +126,7 @@
 		5B4A2EC9294DD7D100A9AD4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5BD6172B295473E60022C98E /* SideMenu */,
 				5B7490A0295399E9007F67ED /* Calendar */,
 				5B74909D295399C1007F67ED /* Main */,
 				5B74909C295399B8007F67ED /* Setting */,
@@ -121,6 +140,7 @@
 		5B4A2ECA294DD7D400A9AD4A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5B16C7772980797F0083D7CE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -128,6 +148,7 @@
 		5B4A2ECB294DD7D700A9AD4A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5B16C779298085000083D7CE /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -196,6 +217,16 @@
 				5B7490A129539B1D007F67ED /* CalendarView.swift */,
 			);
 			path = Calendar;
+			sourceTree = "<group>";
+		};
+		5BD6172B295473E60022C98E /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5B484B28298682B80035B61C /* ViewModel */,
+				5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */,
+				5BD61730295475680022C98E /* SideMenuView.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,13 +309,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
 				5B4A2ED1294DDB4400A9AD4A /* LoginView.swift in Sources */,
 				5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */,
+				5BD61731295475680022C98E /* SideMenuView.swift in Sources */,
 				5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */,
+				5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */,
+				5B16C7782980797F0083D7CE /* User.swift in Sources */,
 				5B74909F295399E3007F67ED /* SettingView.swift in Sources */,
 				5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */,
 				5B4A2EBB294DD7B100A9AD4A /* LastReservationApp.swift in Sources */,
+				5B16C77A298085000083D7CE /* UserService.swift in Sources */,
 				5B74909929539626007F67ED /* MainTabView.swift in Sources */,
 				5B4A2ED5294E0FC300A9AD4A /* CustomInputFields.swift in Sources */,
 				5B4A2ED3294DDB6F00A9AD4A /* RegistrationView.swift in Sources */,

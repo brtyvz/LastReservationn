@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    var body: some View {
-        Text("Main Menu!")
-    }
-}
+    @State private var showNewTweetView = false
+     
+     
+     var body: some View {
+        Text("ana ekran")
+        
+     }
+ }
+
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
     }
 }
+
