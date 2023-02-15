@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @State private var showNewTweetView = false
-     
+    private let gridItem = [GridItem(.flexible()),GridItem(.flexible())]
+    
      
      var body: some View {
-        Text("ana ekran")
+         
+         VStack {
+             
+                 ScrollView(.horizontal,showsIndicators: false) {
+                     LazyHStack {
+                         ForEach(0..<6) { _ in
+                             CalendarMainView()
+                         }
+                     }
+                 }.frame( height: 90, alignment: .center)
+                 .padding()
+             
+                 ScrollView() {
+                     LazyVGrid(columns: gridItem) {
+                         ForEach(0..<6) { _ in
+                             IndexView()
+                         }
+                     }
+                 }.padding()
+         }
+       
+        
         
      }
  }
