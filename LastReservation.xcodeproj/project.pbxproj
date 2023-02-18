@@ -29,6 +29,9 @@
 		5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7490A129539B1D007F67ED /* CalendarView.swift */; };
 		5B791A3A299913F8006EC79B /* IndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A39299913F8006EC79B /* IndexView.swift */; };
 		5B791A3C299A7DE9006EC79B /* CalendarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A3B299A7DE9006EC79B /* CalendarMainView.swift */; };
+		5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A3D299D8D84006EC79B /* CustomDatePicker.swift */; };
+		5B791A41299E404E006EC79B /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A40299E404E006EC79B /* DateValue.swift */; };
+		5B791A43299F79C5006EC79B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A42299F79C5006EC79B /* Task.swift */; };
 		5B8499C329982E5A009BA70E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8499C229982E59009BA70E /* Date.swift */; };
 		5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */; };
 		5BD61731295475680022C98E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD61730295475680022C98E /* SideMenuView.swift */; };
@@ -54,6 +57,9 @@
 		5B7490A129539B1D007F67ED /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		5B791A39299913F8006EC79B /* IndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexView.swift; sourceTree = "<group>"; };
 		5B791A3B299A7DE9006EC79B /* CalendarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMainView.swift; sourceTree = "<group>"; };
+		5B791A3D299D8D84006EC79B /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		5B791A40299E404E006EC79B /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
+		5B791A42299F79C5006EC79B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5B8499C229982E59009BA70E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
 		5BD61730295475680022C98E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
@@ -222,7 +228,9 @@
 		5B7490A0295399E9007F67ED /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				5B791A3F299E4037006EC79B /* Model */,
 				5B7490A129539B1D007F67ED /* CalendarView.swift */,
+				5B791A3D299D8D84006EC79B /* CustomDatePicker.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -234,6 +242,15 @@
 				5B791A3B299A7DE9006EC79B /* CalendarMainView.swift */,
 			);
 			path = Index;
+			sourceTree = "<group>";
+		};
+		5B791A3F299E4037006EC79B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B791A40299E404E006EC79B /* DateValue.swift */,
+				5B791A42299F79C5006EC79B /* Task.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5BD6172B295473E60022C98E /* SideMenu */ = {
@@ -328,12 +345,14 @@
 			files = (
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
+				5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */,
 				5B791A3A299913F8006EC79B /* IndexView.swift in Sources */,
 				5B791A3C299A7DE9006EC79B /* CalendarMainView.swift in Sources */,
 				5B4A2ED1294DDB4400A9AD4A /* LoginView.swift in Sources */,
 				5B8499C329982E5A009BA70E /* Date.swift in Sources */,
 				5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */,
 				5BD61731295475680022C98E /* SideMenuView.swift in Sources */,
+				5B791A41299E404E006EC79B /* DateValue.swift in Sources */,
 				5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */,
 				5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */,
 				5B16C7782980797F0083D7CE /* User.swift in Sources */,
@@ -343,6 +362,7 @@
 				5B16C77A298085000083D7CE /* UserService.swift in Sources */,
 				5B74909929539626007F67ED /* MainTabView.swift in Sources */,
 				5B4A2ED5294E0FC300A9AD4A /* CustomInputFields.swift in Sources */,
+				5B791A43299F79C5006EC79B /* Task.swift in Sources */,
 				5B4A2ED3294DDB6F00A9AD4A /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
