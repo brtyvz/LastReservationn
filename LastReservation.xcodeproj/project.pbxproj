@@ -23,6 +23,8 @@
 		5B4A2EDE294E232800A9AD4A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDD294E232800A9AD4A /* FirebaseFirestoreSwift */; };
 		5B4A2EE0294E232800A9AD4A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDF294E232800A9AD4A /* FirebaseStorage */; };
 		5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */; };
+		5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C5F29A558360053A850 /* NewMainMenu.swift */; };
+		5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */; };
 		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
@@ -51,6 +53,8 @@
 		5B4A2ED4294E0FC300A9AD4A /* CustomInputFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputFields.swift; sourceTree = "<group>"; };
 		5B4A2ED6294E20CD00A9AD4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		5B654C5F29A558360053A850 /* NewMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenu.swift; sourceTree = "<group>"; };
+		5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenuViewModel.swift; sourceTree = "<group>"; };
 		5B74909829539626007F67ED /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -200,6 +204,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		5B654C5E29A5581B0053A850 /* NewMainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5B654C5F29A558360053A850 /* NewMainMenu.swift */,
+				5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */,
+			);
+			path = NewMainMenu;
+			sourceTree = "<group>";
+		};
 		5B749097295393F9007F67ED /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +232,7 @@
 		5B74909D295399C1007F67ED /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5B654C5E29A5581B0053A850 /* NewMainMenu */,
 				5B791A3629991397006EC79B /* Index */,
 				5B74909A295397CE007F67ED /* MainMenuView.swift */,
 			);
@@ -343,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */,
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
 				5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */,
@@ -352,6 +367,7 @@
 				5B8499C329982E5A009BA70E /* Date.swift in Sources */,
 				5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */,
 				5BD61731295475680022C98E /* SideMenuView.swift in Sources */,
+				5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */,
 				5B791A41299E404E006EC79B /* DateValue.swift in Sources */,
 				5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */,
 				5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */,
