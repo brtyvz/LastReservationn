@@ -7,32 +7,41 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct MainTabView: View {
     @State private var selectedIndex = 0
+    
     var body: some View {
         TabView(selection: $selectedIndex) {
-           MainMenuView()
+            MainMenuView()
                 .onTapGesture {
                     self.selectedIndex = 0
                 }
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(0)
+            
             CalendarView()
                 .onTapGesture {
                     self.selectedIndex = 1
-                }.tabItem {
-                    Image(systemName: "calendar")
+                }
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
                 }.tag(1)
-        SettingView()
+            
+            SettingView()
                 .onTapGesture {
                     self.selectedIndex = 2
-                }.tabItem{
-                    Image(systemName: "gear")
+                }
+                .tabItem {
+                    Image(systemName: "bell")
                 }.tag(2)
+                
         }
     }
 }
+
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()

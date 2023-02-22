@@ -17,7 +17,9 @@ struct SettingView: View {
                 } label: {
                     Text("Çıkış Yap")
                 }
-
+                if let user = viewModel.currentUser {
+                    Text(user.email)
+                }
             }
             .navigationTitle(Text("Ayarlar"))
         }.navigationViewStyle(StackNavigationViewStyle())

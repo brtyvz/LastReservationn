@@ -8,13 +8,40 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    var body: some View {
-        Text("Main Menu!")
-    }
-}
+    private let gridItem = [GridItem(.flexible()),GridItem(.flexible())]
+    
+     
+     var body: some View {
+         
+         VStack {
+             
+                 ScrollView(.horizontal,showsIndicators: false) {
+                     LazyHStack {
+                         ForEach(0..<6) { _ in
+                             CalendarMainView()
+                         }
+                     }
+                 }.frame( height: 90, alignment: .center)
+                 .padding()
+             
+                 ScrollView() {
+                     LazyVGrid(columns: gridItem) {
+                         ForEach(0..<6) { _ in
+                             IndexView()
+                         }
+                     }
+                 }.padding()
+         }
+       
+        
+        
+     }
+ }
+
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView()
     }
 }
+
