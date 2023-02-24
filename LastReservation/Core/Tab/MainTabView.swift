@@ -14,7 +14,7 @@ struct MainTabView: View {
     
     var body: some View {
         TabView(selection: $selectedIndex) {
-            MainMenuView()
+            NewMainMenu()
                 .onTapGesture {
                     self.selectedIndex = 0
                 }
