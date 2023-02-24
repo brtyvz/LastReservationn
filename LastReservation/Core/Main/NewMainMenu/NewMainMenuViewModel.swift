@@ -6,15 +6,48 @@
 //
 
 import Foundation
+import SwiftUI
 
 class NewMainMenuViewModel:ObservableObject{
     @Published var currentWeeks: [Date] = []
     
     @Published var currentDay: Date = Date()
     
+    @Published var filteredDays:[DayModel]?
+    
+    @Published var storedDays:[DayModel] = [
+    
+        DayModel(hour: "9.00", capacity: "55", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "10.00", capacity: "40", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "11.00", capacity: "40", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "12.00", capacity: "54", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "13.00", capacity: "43", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "11.00", capacity: "5", taskDate: .init(timeIntervalSince1970: 1677179193)),
+        DayModel(hour: "12.00", capacity: "23", taskDate: .init(timeIntervalSince1970: 1677179193))
+        
+    
+    ]
+    
     init(){
         fetchCurrentWeek()
+        filterTodayTasks()
     }
+    
+    func filterTodayTasks(){
+        DispatchQueue.global(qos: .userInteractive).async {
+            let calendar = Calendar.current
+            
+            let filtered = self.storedDays.filter{
+                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
+            }
+            DispatchQueue.main.async {
+                withAnimation{
+                    self.filteredDays = filtered
+                }
+            }
+        }
+    }
+    
     
     func fetchCurrentWeek(){
         let today = Date()
