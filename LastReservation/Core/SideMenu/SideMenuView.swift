@@ -23,21 +23,29 @@ struct SideMenuView: View {
                         Text(user.email)
                             .font(.headline)
                         
-                      
                     }
                     
-                  
                 }
                 .padding(.leading)
                 
                 ForEach(SideMenuViewModel.allCases, id:\.rawValue) { viewModel in
-                    if viewModel == .profile {
+                    if viewModel == .main {
                         NavigationLink {
-                           
+                           NewMainMenu()
                         } label: {
                             SideMenuOptionRowView(viewModel: viewModel)
                         }
-                    } else if viewModel == .logout {
+                    }
+                    
+                    else if viewModel == .calendar{
+                        NavigationLink {
+                           CalendarView()
+                        } label: {
+                            SideMenuOptionRowView(viewModel: viewModel)
+                        }
+                    }
+                    
+                    else if viewModel == .logout {
                         Button {
                             print("logout")
                             authViewModel.signOut()

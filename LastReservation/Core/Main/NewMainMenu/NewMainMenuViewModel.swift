@@ -22,8 +22,8 @@ class NewMainMenuViewModel:ObservableObject{
         DayModel(hour: "11.00", capacity: "40", taskDate: .init(timeIntervalSince1970: 1677241700)),
         DayModel(hour: "12.00", capacity: "54", taskDate: .init(timeIntervalSince1970: 1677241700)),
         DayModel(hour: "13.00", capacity: "43", taskDate: .init(timeIntervalSince1970: 1677241700)),
-        DayModel(hour: "11.00", capacity: "5", taskDate: .init(timeIntervalSince1970: 1677179193)),
-        DayModel(hour: "12.00", capacity: "23", taskDate: .init(timeIntervalSince1970: 1677179193))
+        DayModel(hour: "14.00", capacity: "5", taskDate: .init(timeIntervalSince1970: 1677241700)),
+        DayModel(hour: "15.00", capacity: "23", taskDate: .init(timeIntervalSince1970: 1677241700))
         
     
     ]
