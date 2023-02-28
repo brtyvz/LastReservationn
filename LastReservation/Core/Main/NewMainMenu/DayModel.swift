@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DayModel:Identifiable{
+struct DayModel:Identifiable,Decodable{
     var id = UUID().uuidString
     var hour:String
     var capacity:String

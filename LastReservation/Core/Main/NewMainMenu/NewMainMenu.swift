@@ -10,55 +10,67 @@ import SwiftUI
 struct NewMainMenu: View {
     @StateObject var taskModel:NewMainMenuViewModel = NewMainMenuViewModel()
     @Namespace var animation
+    @State var alert = false
+    
+    
     var body: some View {
         ScrollView(.vertical,showsIndicators:false){
             
-            LazyVStack(spacing:15,pinnedViews: [.sectionHeaders]) {
-                Section {
-                    ScrollView(.horizontal,showsIndicators: false){
-                        HStack(spacing:10) {
-                            ForEach(taskModel.currentWeeks,id:\.self){ day in
-                                VStack(spacing:10){
-                                Text(taskModel.extractDate(date: day, format: "dd"))
-                                    .font(.system(size: 15))
-                                    .fontWeight(.semibold)
-                                
-                                Text(taskModel.extractDate(date: day, format: "EEE"))
-                                    .font(.system(size: 14))
-                                
-                                Circle()
-                                    .fill(.white)
-                                    .frame(width:8,height: 8)
-                                    .opacity(taskModel.isToday(date: day) ? 1:0)
-                            }
-                                .foregroundStyle(taskModel.isToday(date: day) ? .primary : .secondary)
-                                .foregroundColor(taskModel.isToday(date: day) ? .white : .black)
-                                
-                            // Capsule shape
-                            .frame(width:45,height:90)
-                            .background(
-                            
-                                ZStack{
-                                    if taskModel.isToday(date: day) {
-                                        Capsule()
-                                            .fill(.black)
-                                            .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
-                                    }
+//            NavigationLink("CustomAlertView", destination:CustomAlertView(show: $alert), isActive: $alert)
+            
+            ZStack {
+                LazyVStack(spacing:15,pinnedViews: [.sectionHeaders]) {
+                    Section {
+                        ScrollView(.horizontal,showsIndicators: false){
+                            HStack(spacing:10) {
+                                ForEach(taskModel.currentWeeks,id:\.self){ day in
+                                    VStack(spacing:10){
+                                    Text(taskModel.extractDate(date: day, format: "dd"))
+                                        .font(.system(size: 15))
+                                        .fontWeight(.semibold)
+                                    
+                                    Text(taskModel.extractDate(date: day, format: "EEE"))
+                                        .font(.system(size: 14))
+                                    
+                                    Circle()
+                                        .fill(.white)
+                                        .frame(width:8,height: 8)
+                                        .opacity(taskModel.isToday(date: day) ? 1:0)
                                 }
+                                    .foregroundStyle(taskModel.isToday(date: day) ? .primary : .secondary)
+                                    .foregroundColor(taskModel.isToday(date: day) ? .white : .black)
+                                    
+                                // Capsule shape
+                                .frame(width:45,height:90)
+                                .background(
                                 
-                            )
-                            .onTapGesture {
-                                withAnimation{
-                                    taskModel.currentDay = day
+                                    ZStack{
+                                        if taskModel.isToday(date: day) {
+                                            Capsule()
+                                                .fill(.black)
+                                                .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                        }
+                                    }
+                                    
+                                )
+                                .onTapGesture {
+                                    withAnimation{
+                                        taskModel.currentDay = day
+                                    }
                                 }
                             }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
+                       
+                        TasksView()
+                    }  header: {
+                        HeaderView()
+                    }
+                    
                 }
-                    TasksView()
-                }  header: {
-                    HeaderView()
+                if alert {
+                    CustomAlertView(show: $alert)
                 }
             }
         }
@@ -69,14 +81,13 @@ struct NewMainMenu: View {
         LazyVStack(spacing:18) {
             if let tasks = taskModel.filteredDays {
                 if tasks.isEmpty{
-                    Text("No tasks found")
-                        .font(.system(size: 16))
-                        .fontWeight(.light)
-                        .offset(y: 100)
+                    ForEach(0..<6){i in
+                        TaskCardView(hour: "\(taskModel.hours[i])", capacity: "\(taskModel.capacity[0])")
+                    }
                 }
                 else {
-                    ForEach(tasks){task in
-                        TaskCardView(task: task)
+                    ForEach(0..<6){i in
+                        TaskCardView(hour: "\(taskModel.hours[i])", capacity: "\(taskModel.capacity[0])")
                     }
                 }
             }
@@ -93,7 +104,8 @@ struct NewMainMenu: View {
         
     }
     
-    func TaskCardView(task: DayModel) -> some View {
+
+    func TaskCardView(hour:String,capacity:String) -> some View {
         HStack(alignment: .top, spacing: 25){
             VStack(spacing:10){
                 Circle()
@@ -109,15 +121,13 @@ struct NewMainMenu: View {
                     .fill(.black)
                     .frame(width:3)
             }
-            Button {
-                
-            } label: {
+            Button(action: { self.alert.toggle() }, label: {
                 VStack{
                     HStack (alignment: .top, spacing: 10){
                         VStack(alignment: .leading, spacing: 12){
-                            Text("Saat: \(task.hour)")
+                            Text("Saat:\(hour)")
                                 .fontWeight(.bold)
-                            Text("Kapasite: \(task.capacity)")
+                            Text("Kapasite:\(capacity)")
                                 .fontWeight(.bold)
                         }
                     }
@@ -128,7 +138,9 @@ struct NewMainMenu: View {
                 .cornerRadius(25)
                 .foregroundColor(.white)
             }
+                  )
         }
+                   
         .hLeading()
       
     }

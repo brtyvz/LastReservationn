@@ -36,6 +36,7 @@
 		5B791A41299E404E006EC79B /* DateValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A40299E404E006EC79B /* DateValue.swift */; };
 		5B791A43299F79C5006EC79B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A42299F79C5006EC79B /* Task.swift */; };
 		5B8499C329982E5A009BA70E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8499C229982E59009BA70E /* Date.swift */; };
+		5BC0D99729AE53140056B4BB /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0D99629AE53140056B4BB /* CustomAlertView.swift */; };
 		5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */; };
 		5BD61731295475680022C98E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD61730295475680022C98E /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		5B791A40299E404E006EC79B /* DateValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValue.swift; sourceTree = "<group>"; };
 		5B791A42299F79C5006EC79B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5B8499C229982E59009BA70E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		5BC0D99629AE53140056B4BB /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
 		5BD61730295475680022C98E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4A2ED4294E0FC300A9AD4A /* CustomInputFields.swift */,
+				5BC0D99629AE53140056B4BB /* CustomAlertView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC0D99729AE53140056B4BB /* CustomAlertView.swift in Sources */,
 				5B654C6429A767FC0053A850 /* DayModel.swift in Sources */,
 				5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */,
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
