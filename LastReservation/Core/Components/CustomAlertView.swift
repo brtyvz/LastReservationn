@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CustomAlertView: View {
     @Binding var show :Bool
+    @Binding var hour:String
+    @Binding var date:String
+    @Binding var capacity:String
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical:.top)){
             VStack(spacing:25){
@@ -16,14 +19,15 @@ struct CustomAlertView: View {
                     .font(.title)
                     .bold()
                     .foregroundColor(.purple)
-                Text("2 Ekim / Saat: 09.00")
+                Text("\(date) Saat:\(hour)")
+                Text("Kapasite:\(capacity)")
                     .bold()
                 
                 
                 HStack {
                     
                     Button {
-                        
+                        print("Tarih:\(date) Saat:\(hour) / Kapasite:\(capacity)")
                     } label: {
                         Text("Onaylıyorum")
                             .foregroundColor(.white)
@@ -35,7 +39,7 @@ struct CustomAlertView: View {
                     }
                     
                     Button {
-                        
+                        show.toggle()
                     } label: {
                         Text("Vazgeç")
                             .foregroundColor(.white)
@@ -56,14 +60,14 @@ struct CustomAlertView: View {
             .cornerRadius(25)
             
             Button {
-                withAnimation{
                     show.toggle()
-                    
-                }
+                
             } label: {
                 Image(systemName: "xmark.circle")
                     .font(.system(size: 28,weight: .bold))
                     .foregroundColor(.black)
+                    .padding(.trailing,5)
+                    .padding(.top,5)
             }
             
         }
@@ -88,6 +92,11 @@ struct BlurView:UIViewRepresentable {
 
 struct CustomAlertView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomAlertView(show: .constant(true))
+        CustomAlertView(
+            show: .constant(true),
+            hour: .constant("10.00"),
+            date:.constant("2 ekim"),
+            capacity: .constant("50")
+        )
     }
 }

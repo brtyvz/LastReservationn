@@ -11,7 +11,9 @@ struct NewMainMenu: View {
     @StateObject var taskModel:NewMainMenuViewModel = NewMainMenuViewModel()
     @Namespace var animation
     @State var alert = false
-    
+    @State var date:String = "1 ekim"
+    @State var hour:String = "10.00"
+    @State var capacity:String = "50"
     
     var body: some View {
         ScrollView(.vertical,showsIndicators:false){
@@ -20,6 +22,7 @@ struct NewMainMenu: View {
             
             ZStack {
                 LazyVStack(spacing:15,pinnedViews: [.sectionHeaders]) {
+                    HeaderView()
                     Section {
                         ScrollView(.horizontal,showsIndicators: false){
                             HStack(spacing:10) {
@@ -51,26 +54,30 @@ struct NewMainMenu: View {
                                                 .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
                                         }
                                     }
-                                    
                                 )
                                 .onTapGesture {
                                     withAnimation{
+                                        let dayString = day
+                                        let formatter = DateFormatter()
+                                        formatter.dateFormat = "E, d MMM"
+                                       let dayLast = formatter.string(from: dayString)
+                                        
+
+                                        self.date = dayLast
                                         taskModel.currentDay = day
                                     }
                                 }
+                               
                             }
                         }
                         .padding(.horizontal)
                     }
                        
                         TasksView()
-                    }  header: {
-                        HeaderView()
                     }
-                    
                 }
                 if alert {
-                    CustomAlertView(show: $alert)
+                    CustomAlertView(show: $alert,hour: $hour,date: $date, capacity: $capacity)
                 }
             }
         }
@@ -121,7 +128,12 @@ struct NewMainMenu: View {
                     .fill(.black)
                     .frame(width:3)
             }
-            Button(action: { self.alert.toggle() }, label: {
+            Button(action: {
+                self.alert.toggle()
+                self.hour = hour
+                self.capacity = capacity
+                
+            }, label: {
                 VStack{
                     HStack (alignment: .top, spacing: 10){
                         VStack(alignment: .leading, spacing: 12){
@@ -162,7 +174,7 @@ struct NewMainMenu: View {
 
 struct NewMainMenu_Previews: PreviewProvider {
     static var previews: some View {
-        NewMainMenu()
+        NewMainMenu(date: "1 ekim", hour: "11.00", capacity: "50")
     }
 }
 
@@ -174,4 +186,17 @@ extension View{
 }
 
 
+extension Formatter {
+    static let weekDay: DateFormatter = {
+        let formatter = DateFormatter()
 
+        // you can use a fixed language locale
+        formatter.locale = Locale(identifier: "zh")
+        // or use the current locale
+        // formatter.locale = .current
+        
+        // and for standalone local day of week use ccc instead of E
+        formatter.dateFormat = "ccc"
+        return formatter
+    }()
+}
