@@ -45,6 +45,14 @@ struct SideMenuView: View {
                         }
                     }
                     
+                    else if viewModel == .reservations{
+                        NavigationLink {
+                           ReservationView()
+                        } label: {
+                            SideMenuOptionRowView(viewModel: viewModel)
+                        }
+                    }
+                    
                     else if viewModel == .logout {
                         Button {
                             print("logout")
