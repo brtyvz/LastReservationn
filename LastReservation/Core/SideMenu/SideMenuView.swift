@@ -10,9 +10,11 @@ import SwiftUI
 
 struct SideMenuView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    
+    @State var date:String = "1 ekim"
+    @State var hour:String = "10.00"
+    @State var capacity:String = "50"
     var body: some View {
-        
+//
         VStack {
             if let user = authViewModel.currentUser {
                 VStack(alignment: .leading, spacing: 32) {
@@ -47,7 +49,7 @@ struct SideMenuView: View {
                     
                     else if viewModel == .reservations{
                         NavigationLink {
-                           ReservationView()
+                            ReservationView(dateValue:$date , hourValue: $hour, capacityValue: $capacity)
                         } label: {
                             SideMenuOptionRowView(viewModel: viewModel)
                         }

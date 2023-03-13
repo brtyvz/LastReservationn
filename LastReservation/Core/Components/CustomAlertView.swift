@@ -12,6 +12,7 @@ struct CustomAlertView: View {
     @Binding var hour:String
     @Binding var date:String
     @Binding var capacity:String
+    @StateObject var taskModel:NewMainMenuViewModel = NewMainMenuViewModel()
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical:.top)){
             VStack(spacing:25){
@@ -26,8 +27,32 @@ struct CustomAlertView: View {
                 
                 HStack {
                     
+//                    NavigationLink {
+//
+//                        ReservationView(dateValue: $date, hourValue: $hour, capacityValue: $capacity)
+//                    } label: {
+//                        Text("Onaylıyorum")
+//                            .foregroundColor(.white)
+//                            .fontWeight(.bold)
+//                            .padding(.vertical,10)
+//                            .padding(.horizontal,25)
+//                            .background(Color.purple)
+//                            .clipShape(Capsule())
+//                    }
+                    
                     Button {
-                        print("Tarih:\(date) Saat:\(hour) / Kapasite:\(capacity)")
+                        if let cap = Int(capacity) {
+                            capacity = String(max(cap - 1, 0))
+                           }
+//                        print("kapasite:\(capacity)")
+//
+//                       taskModel.addReservation(capacity: capacity, hour: hour, date: date)
+                        
+                        taskModel.addReservation(capacity: "", hour: "", date: "")
+                     
+//                        taskModel.updateReservation(date: date, hour: hour, capacity: capacity)
+//                        print("Tarih:\(date) Saat:\(hour) / Kapasite:\(capacity)")
+
                     } label: {
                         Text("Onaylıyorum")
                             .foregroundColor(.white)

@@ -132,9 +132,9 @@ struct NewMainMenu: View {
                 self.alert.toggle()
                 self.hour = hour
                 self.capacity = capacity
-                
             }, label: {
                 VStack{
+                    
                     HStack (alignment: .top, spacing: 10){
                         VStack(alignment: .leading, spacing: 12){
                             Text("Saat:\(hour)")

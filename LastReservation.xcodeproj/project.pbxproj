@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0CBEDA29BF2AA300504BC4 /* FileLast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CBED929BF2AA300504BC4 /* FileLast.swift */; };
+		5B0CBEDC29BF2FA300504BC4 /* FirestoreDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CBEDB29BF2FA300504BC4 /* FirestoreDays.swift */; };
 		5B16C7782980797F0083D7CE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C7772980797F0083D7CE /* User.swift */; };
 		5B16C77A298085000083D7CE /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C779298085000083D7CE /* UserService.swift */; };
 		5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16C77D29855BF30083D7CE /* SideMenuVİewModel.swift */; };
+		5B460E5729B3377F0047EB6A /* ReservationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B460E5629B3377F0047EB6A /* ReservationModel.swift */; };
 		5B4A2EBB294DD7B100A9AD4A /* LastReservationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBA294DD7B100A9AD4A /* LastReservationApp.swift */; };
 		5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBC294DD7B200A9AD4A /* ContentView.swift */; };
 		5B4A2EBF294DD7B300A9AD4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B4A2EBE294DD7B300A9AD4A /* Assets.xcassets */; };
@@ -23,6 +26,7 @@
 		5B4A2EDE294E232800A9AD4A /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDD294E232800A9AD4A /* FirebaseFirestoreSwift */; };
 		5B4A2EE0294E232800A9AD4A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B4A2EDF294E232800A9AD4A /* FirebaseStorage */; };
 		5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */; };
+		5B57166F29BB538D0045C26E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B57166E29BB538D0045C26E /* File.swift */; };
 		5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C5F29A558360053A850 /* NewMainMenu.swift */; };
 		5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */; };
 		5B654C6429A767FC0053A850 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6329A767FC0053A850 /* DayModel.swift */; };
@@ -43,9 +47,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0CBED929BF2AA300504BC4 /* FileLast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLast.swift; sourceTree = "<group>"; };
+		5B0CBEDB29BF2FA300504BC4 /* FirestoreDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDays.swift; sourceTree = "<group>"; };
 		5B16C7772980797F0083D7CE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B16C779298085000083D7CE /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		5B16C77D29855BF30083D7CE /* SideMenuVİewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SideMenuVİewModel.swift"; sourceTree = "<group>"; };
+		5B460E5629B3377F0047EB6A /* ReservationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationModel.swift; sourceTree = "<group>"; };
 		5B4A2EB7294DD7B100A9AD4A /* LastReservation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LastReservation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B4A2EBA294DD7B100A9AD4A /* LastReservationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastReservationApp.swift; sourceTree = "<group>"; };
 		5B4A2EBC294DD7B200A9AD4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 		5B4A2ED4294E0FC300A9AD4A /* CustomInputFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputFields.swift; sourceTree = "<group>"; };
 		5B4A2ED6294E20CD00A9AD4A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5B4A2EE1294E259800A9AD4A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		5B57166E29BB538D0045C26E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		5B654C5F29A558360053A850 /* NewMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenu.swift; sourceTree = "<group>"; };
 		5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenuViewModel.swift; sourceTree = "<group>"; };
 		5B654C6329A767FC0053A850 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
@@ -90,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B0CBED829BF2A9600504BC4 /* Notlar */ = {
+			isa = PBXGroup;
+			children = (
+				5B0CBED929BF2AA300504BC4 /* FileLast.swift */,
+			);
+			path = Notlar;
+			sourceTree = "<group>";
+		};
 		5B484B28298682B80035B61C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +133,7 @@
 		5B4A2EB9294DD7B100A9AD4A /* LastReservation */ = {
 			isa = PBXGroup;
 			children = (
+				5B0CBED829BF2A9600504BC4 /* Notlar */,
 				5B4A2ECB294DD7D700A9AD4A /* Service */,
 				5B4A2ECA294DD7D400A9AD4A /* Model */,
 				5B4A2EC9294DD7D100A9AD4A /* Core */,
@@ -165,6 +182,7 @@
 			children = (
 				5B16C7772980797F0083D7CE /* User.swift */,
 				5B8499C229982E59009BA70E /* Date.swift */,
+				5B0CBEDB29BF2FA300504BC4 /* FirestoreDays.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -226,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				5B6ADE3C29B270EF00DC8F65 /* ReservationView.swift */,
+				5B460E5629B3377F0047EB6A /* ReservationModel.swift */,
+				5B57166E29BB538D0045C26E /* File.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -374,14 +394,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0CBEDC29BF2FA300504BC4 /* FirestoreDays.swift in Sources */,
 				5BC0D99729AE53140056B4BB /* CustomAlertView.swift in Sources */,
 				5B654C6429A767FC0053A850 /* DayModel.swift in Sources */,
 				5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */,
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
+				5B0CBEDA29BF2AA300504BC4 /* FileLast.swift in Sources */,
 				5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */,
 				5B791A3A299913F8006EC79B /* IndexView.swift in Sources */,
+				5B460E5729B3377F0047EB6A /* ReservationModel.swift in Sources */,
 				5B791A3C299A7DE9006EC79B /* CalendarMainView.swift in Sources */,
+				5B57166F29BB538D0045C26E /* File.swift in Sources */,
 				5B4A2ED1294DDB4400A9AD4A /* LoginView.swift in Sources */,
 				5B6ADE3D29B270EF00DC8F65 /* ReservationView.swift in Sources */,
 				5B8499C329982E5A009BA70E /* Date.swift in Sources */,
