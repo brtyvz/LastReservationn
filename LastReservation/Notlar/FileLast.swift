@@ -5,7 +5,7 @@
 //  Created by Berat Yavuz on 13.03.2023.
 //
 
-import Foundation
+
 
 
 //func fetchDays() {
@@ -86,3 +86,111 @@ import Foundation
 //        }
 //    }
 //}
+
+
+
+
+
+//
+//
+//view model
+//
+//
+
+//    func fetchData() {
+//        let db = Firestore.firestore()
+//        db.collection("ReservationsLast").getDocuments { (querySnapshot, error) in
+//            if let error = error {
+//                print("Error getting documents: \(error)")
+//            } else {
+//                var firestoreDays: [FirestoreDays] = []
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+//                for document in querySnapshot!.documents {
+//                    let data = document.data()
+//                    let date = (data["date"] as? Timestamp)?.dateValue() ?? Date()
+//                    let capacity = data["capacity"] as? Int ?? 0
+//                    let session = data["session"] as? String ?? ""
+//
+//                    let firestoreDay = FirestoreDays(session: session, capacity: capacity, date: date)
+//                    firestoreDays.append(firestoreDay)
+//                }
+//                self.firestoreDays = firestoreDays
+//            }
+//        }
+//    }
+
+
+
+
+
+
+//    func fetchData() {
+//        let db = Firestore.firestore()
+//        db.collection("ReservationsLast").getDocuments { (querySnapshot, error) in
+//            if let error = error {
+//                print("Error getting documents: \(error)")
+//            } else {
+//                var firestoreDays: [FirestoreDays] = []
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "yyyy-MM-dd"
+//                for document in querySnapshot!.documents {
+//                    let data = document.data()
+//                    let date = (data["date"] as? Timestamp)?.dateValue() ?? Date()
+//                    let session = (data["session"] as? Timestamp)?.dateValue() ?? Date()
+//                    let capacity = data["capacity"] as? Int ?? 0
+//                    let firestoreDay = FirestoreDays(session: session, capacity: capacity, date: date)
+//                    firestoreDays.append(firestoreDay)
+//                }
+//                self.firestoreDays = firestoreDays
+//            }
+//        }
+//    }
+
+
+//                let db = Firestore.firestore()
+//                let ref = db.collection("Index").document()
+//                ref.setData(["Capacity":capacity,"hour":hour,"date":date]){ error in
+//
+//                    if let error = error {
+//                        print(error.localizedDescription)
+//                    }
+//
+//                }
+
+
+//    func getRandevular() {
+//         let db = Firestore.firestore()
+//         let collectionRef = db.collection("Reservations")
+//
+//         collectionRef.getDocuments { (querySnapshot, error) in
+//             if let error = error {
+//                 print("Hata: \(error.localizedDescription)")
+//                 return
+//             }
+//
+//             var randevular = [ReservationModel]()
+//
+//             for document in querySnapshot!.documents {
+//                 let data = document.data()
+//
+//                 guard let date = data["date"] as? String,
+//                       let session = data["session"] as? String,
+//                       let capacity = data["capacity"] as? Int else {
+//                     continue
+//                 }
+//
+////                 self.getDate(from: date)
+//
+//                 let randevu = ReservationModel(hour: session, capacity: capacity, date: date)
+//                 randevular.append(randevu)
+//             }
+//
+//             DispatchQueue.main.async {
+//                 self.reservation = randevular
+//             }
+//         }
+//
+//
+//
+//     }

@@ -12,10 +12,14 @@ struct NewMainMenu: View {
     @Namespace var animation
     @State var alert = false
     @State var date:String = "1 ekim"
-    @State var hour:String = "10.00"
-    @State var capacity:String = "50"
-    
+    @State var session:String = "10.00"
+    @State var capacity:Int = 50
+    let weekStartingDate = Calendar.current.date(bySetting: .weekday, value: 2, of: Date())!
     var body: some View {
+//        let weekdays = Calendar.current.shortWeekdaySymbols
+//        let weekEndingDate = Calendar.current.date(byAdding: .day, value: 6, to: weekStartingDate)!
+//        let daysInWeek = Calendar.current.dateComponents([.day], from: weekStartingDate, to: weekEndingDate).day! + 1
+//        let days = (0..<daysInWeek).compactMap { Calendar.current.date(byAdding: .day, value: $0, to: weekStartingDate) }
         ScrollView(.vertical,showsIndicators:false){
             
 //            NavigationLink("CustomAlertView", destination:CustomAlertView(show: $alert), isActive: $alert)
@@ -26,49 +30,48 @@ struct NewMainMenu: View {
                     Section {
                         ScrollView(.horizontal,showsIndicators: false){
                             HStack(spacing:10) {
-                                ForEach(taskModel.currentWeeks,id:\.self){ day in
-                                    VStack(spacing:10){
-                                    Text(taskModel.extractDate(date: day, format: "dd"))
-                                        .font(.system(size: 15))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text(taskModel.extractDate(date: day, format: "EEE"))
-                                        .font(.system(size: 14))
-                                    
-                                    Circle()
-                                        .fill(.white)
-                                        .frame(width:8,height: 8)
-                                        .opacity(taskModel.isToday(date: day) ? 1:0)
-                                }
-                                    .foregroundStyle(taskModel.isToday(date: day) ? .primary : .secondary)
-                                    .foregroundColor(taskModel.isToday(date: day) ? .white : .black)
-                                    
-                                // Capsule shape
-                                .frame(width:45,height:90)
-                                .background(
-                                
-                                    ZStack{
-                                        if taskModel.isToday(date: day) {
-                                            Capsule()
-                                                .fill(.black)
-                                                .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                ForEach(taskModel.firestoreDays, id: \.id) { firestoreDay in
+                                    VStack(spacing: 10) {
+                                        Text(taskModel.extractDate(date: firestoreDay.date, format: "dd"))
+                                            .font(.system(size: 15))
+                                            .fontWeight(.semibold)
+                                        
+                                        Text(taskModel.extractDate(date: firestoreDay.date, format: "EEE"))
+                                            .font(.system(size: 14))
+                                        
+                                        Circle()
+                                            .fill(.white)
+                                            .frame(width: 8, height: 8)
+                                            .opacity(taskModel.isToday(date: firestoreDay.date) ? 1 : 0)
+                                    }
+                                    .foregroundStyle(taskModel.isToday(date: firestoreDay.date) ? .primary : .secondary)
+                                    .foregroundColor(taskModel.isToday(date: firestoreDay.date) ? .white : .black)
+                                    // Capsule shape
+                                    .frame(width: 45, height: 90)
+                                    .background(
+                                        ZStack{
+                                            if taskModel.isToday(date: firestoreDay.date) {
+                                                Capsule()
+                                                    .fill(.black)
+                                                    .matchedGeometryEffect(id: "CURRENTDAY", in: animation)
+                                            }
+                                        }
+                                    )
+                                    .onTapGesture {
+                                        withAnimation{
+                                            let dayString = firestoreDay.date
+                                            let formatter = DateFormatter()
+                                            formatter.dateFormat = "E, d MMM"
+                                            let dayLast = formatter.string(from: dayString)
+
+                                            self.date = dayLast
+                                            taskModel.currentDay = firestoreDay.date
                                         }
                                     }
-                                )
-                                .onTapGesture {
-                                    withAnimation{
-                                        let dayString = day
-                                        let formatter = DateFormatter()
-                                        formatter.dateFormat = "E, d MMM"
-                                       let dayLast = formatter.string(from: dayString)
-                                        
-
-                                        self.date = dayLast
-                                        taskModel.currentDay = day
-                                    }
                                 }
-                               
-                            }
+
+
+
                         }
                         .padding(.horizontal)
                     }
@@ -76,8 +79,11 @@ struct NewMainMenu: View {
                         TasksView()
                     }
                 }
+                .onAppear{
+                    taskModel.fetchData(for: weekStartingDate)
+                }
                 if alert {
-                    CustomAlertView(show: $alert,hour: $hour,date: $date, capacity: $capacity)
+                    CustomAlertView(show: $alert,session: $session,date: $date, capacity: $capacity)
                 }
             }
         }
@@ -86,15 +92,23 @@ struct NewMainMenu: View {
     func TasksView() -> some View{
         
         LazyVStack(spacing:18) {
+            let weekdays = Calendar.current.shortWeekdaySymbols
+            let weekEndingDate = Calendar.current.date(byAdding: .day, value: 6, to: weekStartingDate)!
+            let daysInWeek = Calendar.current.dateComponents([.day], from: weekStartingDate, to: weekEndingDate).day! + 1
+            let days = (0..<daysInWeek).compactMap { Calendar.current.date(byAdding: .day, value: $0, to: weekStartingDate) }
             if let tasks = taskModel.filteredDays {
                 if tasks.isEmpty{
-                    ForEach(0..<6){i in
-                        TaskCardView(hour: "\(taskModel.hours[i])", capacity: "\(taskModel.capacity[0])")
+                    ForEach(days, id: \.self) { day in
+                        let filteredDays = taskModel.firestoreDays.filter { $0.date == day }
+                        let firestoreDay = filteredDays.first ?? FirestoreDays(session: "", capacity: 0, date: day)
+                        TaskCardView(hour: "\(firestoreDay.session)", capacity:firestoreDay.capacity )
                     }
                 }
                 else {
-                    ForEach(0..<6){i in
-                        TaskCardView(hour: "\(taskModel.hours[i])", capacity: "\(taskModel.capacity[0])")
+                    ForEach(days, id: \.self) { day in
+                        let filteredDays = taskModel.firestoreDays.filter { $0.date == day }
+                        let firestoreDay = filteredDays.first ?? FirestoreDays(session: "", capacity: 0, date: day)
+                        TaskCardView(hour: "\(firestoreDay.session)", capacity:firestoreDay.capacity )
                     }
                 }
             }
@@ -112,7 +126,7 @@ struct NewMainMenu: View {
     }
     
 
-    func TaskCardView(hour:String,capacity:String) -> some View {
+    func TaskCardView(hour:String,capacity:Int) -> some View {
         HStack(alignment: .top, spacing: 25){
             VStack(spacing:10){
                 Circle()
@@ -130,7 +144,7 @@ struct NewMainMenu: View {
             }
             Button(action: {
                 self.alert.toggle()
-                self.hour = hour
+                self.session = hour
                 self.capacity = capacity
             }, label: {
                 VStack{
@@ -174,7 +188,7 @@ struct NewMainMenu: View {
 
 struct NewMainMenu_Previews: PreviewProvider {
     static var previews: some View {
-        NewMainMenu(date: "1 ekim", hour: "11.00", capacity: "50")
+        NewMainMenu(date: "1 ekim", session: "11.00", capacity: 50)
     }
 }
 

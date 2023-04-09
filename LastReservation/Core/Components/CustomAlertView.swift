@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CustomAlertView: View {
     @Binding var show :Bool
-    @Binding var hour:String
+    @Binding var session:String
     @Binding var date:String
-    @Binding var capacity:String
+    @Binding var capacity:Int
     @StateObject var taskModel:NewMainMenuViewModel = NewMainMenuViewModel()
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .trailing, vertical:.top)){
@@ -20,7 +20,7 @@ struct CustomAlertView: View {
                     .font(.title)
                     .bold()
                     .foregroundColor(.purple)
-                Text("\(date) Saat:\(hour)")
+                Text("\(date) Saat:\(session)")
                 Text("Kapasite:\(capacity)")
                     .bold()
                 
@@ -41,14 +41,12 @@ struct CustomAlertView: View {
 //                    }
                     
                     Button {
-                        if let cap = Int(capacity) {
-                            capacity = String(max(cap - 1, 0))
-                           }
+                   
 //                        print("kapasite:\(capacity)")
 //
 //                       taskModel.addReservation(capacity: capacity, hour: hour, date: date)
                         
-                        taskModel.addReservation(capacity: "", hour: "", date: "")
+//                        taskModel.addReservation()
                      
 //                        taskModel.updateReservation(date: date, hour: hour, capacity: capacity)
 //                        print("Tarih:\(date) Saat:\(hour) / Kapasite:\(capacity)")
@@ -115,13 +113,13 @@ struct BlurView:UIViewRepresentable {
     }
 }
 
-struct CustomAlertView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomAlertView(
-            show: .constant(true),
-            hour: .constant("10.00"),
-            date:.constant("2 ekim"),
-            capacity: .constant("50")
-        )
-    }
-}
+//struct CustomAlertView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomAlertView(
+//            show: .constant(true),
+//            session: .constant("10.00"),
+//            date:.constant("2 ekim"),
+//            capacity: .constant("50")
+//        )
+//    }
+//}

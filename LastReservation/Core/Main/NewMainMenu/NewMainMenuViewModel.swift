@@ -28,22 +28,12 @@ class NewMainMenuViewModel:ObservableObject{
     @Published var capacity = ["50"]
     
     @Published var storedDays:[DayModel] = [
-    
-//        DayModel(hour: "9.00", capacity: "55", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "10.00", capacity: "40", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "11.00", capacity: "40", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "12.00", capacity: "54", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "13.00", capacity: "43", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "14.00", capacity: "5", taskDate: .init(timeIntervalSince1970: 1677537666)),
-//        DayModel(hour: "15.00", capacity: "23", taskDate: .init(timeIntervalSince1970: 1677537666))
-        
-    
     ]
     
     init(){
         fetchCurrentWeek()
         filterTodayTasks()
-        fetchData()
+       
     }
     
     func filterTodayTasks(){
@@ -60,10 +50,16 @@ class NewMainMenuViewModel:ObservableObject{
             }
         }
     }
-   
-    func fetchData() {
+    
+    
+    func fetchData(for weekStartingDate: Date) {
         let db = Firestore.firestore()
-        db.collection("ReservationsLast").getDocuments { (querySnapshot, error) in
+        let weekEndingDate = Calendar.current.date(byAdding: .day, value: 6, to: weekStartingDate)!
+        let collectionRef = db.collection("ReservationsLast")
+        let startTimestamp = Timestamp(date: Date())
+        let endTimestamp = Timestamp(date: weekEndingDate)
+        let query = collectionRef.whereField("date", isGreaterThanOrEqualTo: startTimestamp).whereField("date", isLessThanOrEqualTo: endTimestamp)
+        query.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
@@ -75,7 +71,6 @@ class NewMainMenuViewModel:ObservableObject{
                     let date = (data["date"] as? Timestamp)?.dateValue() ?? Date()
                     let capacity = data["capacity"] as? Int ?? 0
                     let session = data["session"] as? String ?? ""
-                    
                     let firestoreDay = FirestoreDays(session: session, capacity: capacity, date: date)
                     firestoreDays.append(firestoreDay)
                 }
@@ -86,30 +81,9 @@ class NewMainMenuViewModel:ObservableObject{
 
 
 
+    
+   
 
-
-
-//    func fetchData() {
-//        let db = Firestore.firestore()
-//        db.collection("ReservationsLast").getDocuments { (querySnapshot, error) in
-//            if let error = error {
-//                print("Error getting documents: \(error)")
-//            } else {
-//                var firestoreDays: [FirestoreDays] = []
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "yyyy-MM-dd"
-//                for document in querySnapshot!.documents {
-//                    let data = document.data()
-//                    let date = (data["date"] as? Timestamp)?.dateValue() ?? Date()
-//                    let session = (data["session"] as? Timestamp)?.dateValue() ?? Date()
-//                    let capacity = data["capacity"] as? Int ?? 0
-//                    let firestoreDay = FirestoreDays(session: session, capacity: capacity, date: date)
-//                    firestoreDays.append(firestoreDay)
-//                }
-//                self.firestoreDays = firestoreDays
-//            }
-//        }
-//    }
 
     let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -159,54 +133,23 @@ class NewMainMenuViewModel:ObservableObject{
     }
     
     
-    //                let db = Firestore.firestore()
-    //                let ref = db.collection("Index").document()
-    //                ref.setData(["Capacity":capacity,"hour":hour,"date":date]){ error in
-    //
-    //                    if let error = error {
-    //                        print(error.localizedDescription)
-    //                    }
-    //
-    //                }
     
-    
-    func getRandevular() {
-         let db = Firestore.firestore()
-         let collectionRef = db.collection("Reservations")
-         
-         collectionRef.getDocuments { (querySnapshot, error) in
-             if let error = error {
-                 print("Hata: \(error.localizedDescription)")
-                 return
-             }
-             
-             var randevular = [ReservationModel]()
-             
-             for document in querySnapshot!.documents {
-                 let data = document.data()
-                 
-                 guard let date = data["date"] as? String,
-                       let session = data["session"] as? String,
-                       let capacity = data["capacity"] as? Int else {
-                     continue
-                 }
-                 
-//                 self.getDate(from: date)
-                 
-                 let randevu = ReservationModel(hour: session, capacity: capacity, date: date)
-                 randevular.append(randevu)
-             }
-             
-             DispatchQueue.main.async {
-                 self.reservation = randevular
-             }
-         }
+    private func updateFirestoreCapacity(day: FirestoreDays) {
+        let db = Firestore.firestore()
+        let docRef = db.collection("ReservationsLast").document("\(day.date.timeIntervalSince1970)-\(day.session)")
         
+        let newCapacity = day.capacity - 1
+        let data = ["capacity": newCapacity]
         
-    
-     }
-    
-    
+        docRef.updateData(data) { error in
+            if let error = error {
+                print("Firestore'da kapasite güncellenirken bir hata oluştu: \(error.localizedDescription)")
+            } else {
+                print("Firestore'da kapasite başarıyla güncellendi. Yeni kapasite: \(newCapacity)")
+            }
+        }
+    }
+
     
     func fetchCurrentWeek(){
         let today = Date()
@@ -254,18 +197,7 @@ class NewMainMenuViewModel:ObservableObject{
         
         return calendar.isDate(currentDay, inSameDayAs: date)
     }
-    
-//    func updateReservation(date:String,hour:String,capacity:String){
-//        let date = date
-//        let hour = hour
-//        let capacity = capacity
-//
-//        let day = ReservationModel(hour: <#T##String#>, capacity: <#T##Int#>, date: <#T##String#>)
-//        DispatchQueue.main.async {
-//            self.reservation.append(day)
-//        }
-//
-//    }
+
 }
 
 

@@ -47,13 +47,13 @@ struct SideMenuView: View {
                         }
                     }
                     
-                    else if viewModel == .reservations{
-                        NavigationLink {
-                            ReservationView(dateValue:$date , hourValue: $hour, capacityValue: $capacity)
-                        } label: {
-                            SideMenuOptionRowView(viewModel: viewModel)
-                        }
-                    }
+//                    else if viewModel == .reservations{
+//                        NavigationLink {
+//                            ReservationView(dateValue:$date , hourValue: $hour, capacityValue: $capacity)
+//                        } label: {
+//                            SideMenuOptionRowView(viewModel: viewModel)
+//                        }
+//                    }
                     
                     else if viewModel == .logout {
                         Button {
