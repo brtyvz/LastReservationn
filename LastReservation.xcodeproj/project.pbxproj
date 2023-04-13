@@ -42,6 +42,9 @@
 		5B791A43299F79C5006EC79B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B791A42299F79C5006EC79B /* Task.swift */; };
 		5B8499C329982E5A009BA70E /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8499C229982E59009BA70E /* Date.swift */; };
 		5BC0D99729AE53140056B4BB /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC0D99629AE53140056B4BB /* CustomAlertView.swift */; };
+		5BD4229D29E314EB000E3DC3 /* FirestoreSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4229C29E314EB000E3DC3 /* FirestoreSessions.swift */; };
+		5BD422A129E6B0F2000E3DC3 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD422A029E6B0F2000E3DC3 /* DayView.swift */; };
+		5BD422A329E75F50000E3DC3 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD422A229E75F50000E3DC3 /* ConfirmationView.swift */; };
 		5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */; };
 		5BD61731295475680022C98E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD61730295475680022C98E /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +82,9 @@
 		5B791A42299F79C5006EC79B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		5B8499C229982E59009BA70E /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		5BC0D99629AE53140056B4BB /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		5BD4229C29E314EB000E3DC3 /* FirestoreSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSessions.swift; sourceTree = "<group>"; };
+		5BD422A029E6B0F2000E3DC3 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		5BD422A229E75F50000E3DC3 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
 		5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
 		5BD61730295475680022C98E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +189,7 @@
 				5B16C7772980797F0083D7CE /* User.swift */,
 				5B8499C229982E59009BA70E /* Date.swift */,
 				5B0CBEDB29BF2FA300504BC4 /* FirestoreDays.swift */,
+				5BD4229C29E314EB000E3DC3 /* FirestoreSessions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -236,6 +243,8 @@
 				5B654C5F29A558360053A850 /* NewMainMenu.swift */,
 				5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */,
 				5B654C6329A767FC0053A850 /* DayModel.swift */,
+				5BD422A029E6B0F2000E3DC3 /* DayView.swift */,
+				5BD422A229E75F50000E3DC3 /* ConfirmationView.swift */,
 			);
 			path = NewMainMenu;
 			sourceTree = "<group>";
@@ -395,9 +404,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B0CBEDC29BF2FA300504BC4 /* FirestoreDays.swift in Sources */,
+				5BD422A129E6B0F2000E3DC3 /* DayView.swift in Sources */,
 				5BC0D99729AE53140056B4BB /* CustomAlertView.swift in Sources */,
 				5B654C6429A767FC0053A850 /* DayModel.swift in Sources */,
 				5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */,
+				5BD4229D29E314EB000E3DC3 /* FirestoreSessions.swift in Sources */,
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
 				5B0CBEDA29BF2AA300504BC4 /* FileLast.swift in Sources */,
@@ -414,6 +425,7 @@
 				5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */,
 				5B791A41299E404E006EC79B /* DateValue.swift in Sources */,
 				5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */,
+				5BD422A329E75F50000E3DC3 /* ConfirmationView.swift in Sources */,
 				5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */,
 				5B16C7782980797F0083D7CE /* User.swift in Sources */,
 				5B74909F295399E3007F67ED /* SettingView.swift in Sources */,

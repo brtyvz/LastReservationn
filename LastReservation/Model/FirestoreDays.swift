@@ -9,7 +9,10 @@ import Foundation
 
 struct FirestoreDays:Identifiable,Decodable,Hashable {
     var id = UUID().uuidString
+    var documentID: String
     var session: String
     var capacity: Int
     var date: Date
 }
+
+
