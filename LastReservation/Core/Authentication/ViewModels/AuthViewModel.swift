@@ -74,4 +74,7 @@ class AuthViewModel:ObservableObject {
                self.currentUser = user
            }
        }
+    
+    
+    
 }

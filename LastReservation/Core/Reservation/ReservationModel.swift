@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Firebase
 
 struct ReservationModel:Identifiable,Decodable,Hashable{
     var id = UUID().uuidString
-    var hour:String
-    var capacity:Int
-    var date:String
+    var session:String
+    var date:Timestamp
+    var number:String
+    var email:String
 }

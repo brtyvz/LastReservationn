@@ -45,6 +45,7 @@
 		5BD4229D29E314EB000E3DC3 /* FirestoreSessions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD4229C29E314EB000E3DC3 /* FirestoreSessions.swift */; };
 		5BD422A129E6B0F2000E3DC3 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD422A029E6B0F2000E3DC3 /* DayView.swift */; };
 		5BD422A329E75F50000E3DC3 /* ConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD422A229E75F50000E3DC3 /* ConfirmationView.swift */; };
+		5BD422A529EB0A27000E3DC3 /* ReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD422A429EB0A27000E3DC3 /* ReservationsView.swift */; };
 		5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */; };
 		5BD61731295475680022C98E /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BD61730295475680022C98E /* SideMenuView.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		5BD4229C29E314EB000E3DC3 /* FirestoreSessions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreSessions.swift; sourceTree = "<group>"; };
 		5BD422A029E6B0F2000E3DC3 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		5BD422A229E75F50000E3DC3 /* ConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationView.swift; sourceTree = "<group>"; };
+		5BD422A429EB0A27000E3DC3 /* ReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationsView.swift; sourceTree = "<group>"; };
 		5BD6172E2954752D0022C98E /* SideMenuOptionRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionRowView.swift; sourceTree = "<group>"; };
 		5BD61730295475680022C98E /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 				5B6ADE3C29B270EF00DC8F65 /* ReservationView.swift */,
 				5B460E5629B3377F0047EB6A /* ReservationModel.swift */,
 				5B57166E29BB538D0045C26E /* File.swift */,
+				5BD422A429EB0A27000E3DC3 /* ReservationsView.swift */,
 			);
 			path = Reservation;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				5BD422A329E75F50000E3DC3 /* ConfirmationView.swift in Sources */,
 				5BD6172F2954752D0022C98E /* SideMenuOptionRowView.swift in Sources */,
 				5B16C7782980797F0083D7CE /* User.swift in Sources */,
+				5BD422A529EB0A27000E3DC3 /* ReservationsView.swift in Sources */,
 				5B74909F295399E3007F67ED /* SettingView.swift in Sources */,
 				5B4A2EE2294E259900A9AD4A /* AuthViewModel.swift in Sources */,
 				5B4A2EBB294DD7B100A9AD4A /* LastReservationApp.swift in Sources */,

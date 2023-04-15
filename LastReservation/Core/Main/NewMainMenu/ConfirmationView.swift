@@ -7,8 +7,12 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+
 
 struct ConfirmationView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
     var selectedDay: Days?
     @Binding var showConfirmation: Bool
     var selectedSession: String?
@@ -16,9 +20,6 @@ struct ConfirmationView: View {
     var db = Firestore.firestore() // Firestore veritabanı referansı
     
    
-
-
-    
     
     var body: some View {
         ZStack {
@@ -44,7 +45,12 @@ struct ConfirmationView: View {
                     Button(action: {
                         // Onaylama işlemi
                        updateCapacity(selectedDay: selectedDay!, selectedSession: selectedSession!)
+                        if let user = authViewModel.currentUser {
+                            saveReservationToFirestore(email: user.email, phoneNumber:user.number, session: selectedSession!, date: selectedDay!)
+                        }
+                      
                         showConfirmation = false
+                        
                     }) {
                         Text("Onayla")
                             .foregroundColor(.white)
@@ -122,18 +128,130 @@ struct ConfirmationView: View {
             }
         }
     }
-
-
-
-
-
-    
     // Tarih formatını ayarlayan yardımcı fonksiyon
     func formatDate(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: date)
     }
+    
+    func saveReservationToFirestore(email: String, phoneNumber: String, session: String, date: Days) {
+        let timestamp = selectedDay?.date
+        
+        // Firestore belgesine kaydedilecek veriyi hazırla
+        let data: [String: Any] = [
+            "email": email,
+            "number": phoneNumber,
+            "session": session,
+            "date": timestamp
+        ]
+
+        // Firestore koleksiyonunu referansını oluştur
+        let collectionRef = db.collection("Reservations")
+
+        // Firestore koleksiyonuna veriyi kaydet
+        collectionRef.addDocument(data: data) { error in
+            if let error = error {
+                // Hata durumunu işle
+                print("Firestore kaydetme hatası: \(error.localizedDescription)")
+            } else {
+                // Başarılı kaydetme durumunu işle
+                print("Firestore kaydetme başarılı!")
+                // Kaydetme başarılı olduğunda showConfirmation değerini true yapabilirsiniz.
+                // Örneğin:
+                self.showConfirmation = true
+            }
+        }
+    }
 
 
+    
 }
+
+
+
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+//import Foundation
+//import SwiftUI
+//import Firebase
+//import FirebaseFirestore
+//import FirebaseAuth
+//
+//class AuthViewModel:ObservableObject {
+//
+//    @Published var userSession:FirebaseAuth.User?
+//    @Published var didAuthenticateUser = false
+//    @Published var currentUser:User?
+//    private var tempUserSession:FirebaseAuth.User?
+//
+//    let auth = Auth.auth()
+//    private let service = UserService()
+//
+//    init(){
+//        self.userSession = Auth.auth().currentUser
+//        self.fetchUser()
+//    }
+//
+//    //MARK: - Login
+//        func login(email email: String, password: String) {
+//            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+//                if let error = error {
+//                    print("DEBUG: Failed to register with error \(error.localizedDescription)")
+//                    return
+//                }
+//
+//                guard let user = result?.user else { return }
+//                self.userSession = user
+//                self.fetchUser()
+//                print("DEBUG: Did Log user in.. \(String(describing: self.userSession?.email))")
+//            }
+//        }
+//
+//    func register(email:String,password:String,number:String) {
+//        auth.createUser(withEmail: email, password: password) { result, error in
+//            if let error = error {
+//                print("\(error.localizedDescription)")
+//                return
+//            }
+//            guard let user  = result?.user else {return}
+//            self.tempUserSession = user
+//
+//            print("Registered user succesfuly")
+//            let data = ["email":email,"number":number,"uid":user.uid]
+//
+//            Firestore.firestore().collection("users")
+//                .document(user.uid)
+//                .setData(data) { _ in
+//                    print("did upload user data")
+//                    self.didAuthenticateUser = true
+//                }
+//        }
+//    }
+//
+//    func signOut() {
+//        userSession = nil
+//        try? auth.signOut()
+//    }
+//
+//    func fetchUser() {
+//           guard let uid = self.userSession?.uid else { return }
+//
+//           service.fetchUser(withUid: uid) { user in
+//               self.currentUser = user
+//           }
+//       }
+//}

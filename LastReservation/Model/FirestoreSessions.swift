@@ -13,7 +13,9 @@ struct Days: Identifiable, Equatable, Hashable {
     var id = UUID().uuidString
     var date: Timestamp
     var sessions: [String: Sessions]
-
+    var db = Firestore.firestore() // Firestore veritabanı referansı
+    
+    
     static func == (lhs: Days, rhs: Days) -> Bool {
         return lhs.id == rhs.id &&
             lhs.date == rhs.date &&
@@ -41,6 +43,8 @@ struct Days: Identifiable, Equatable, Hashable {
 
 
 class denemeViewModel: ObservableObject {
+    @Published var reservations:[ReservationModel] = []
+    
     func fillMissingDays(_ days: [Days]) -> [Days] {
         var filledDays = [Days]()
         var currentDate = days.first?.date.dateValue() ?? Date()
@@ -109,9 +113,51 @@ class denemeViewModel: ObservableObject {
                 completion(.success(filledDays))
             }
         }
+      
+    }
+
+    func fetchReservationFromFirestore(email: String) {
+        let db = Firestore.firestore()
+        // Firestore koleksiyonunu referansını oluştur
+        let collectionRef = db.collection("Reservations")
+
+        // Firestore koleksiyonunda email bilgisine göre sorgu yap
+        collectionRef.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                // Hata durumunu işle
+                print("Firestore sorgu hatası: \(error.localizedDescription)")
+            } else {
+                // Başarılı sorgu durumunu işle
+                print("Firestore sorgu başarılı!")
+                // Sorgu sonucundan dökümanları işle
+                if let documents = querySnapshot?.documents {
+                    for document in documents {
+                        let reservationData = document.data()
+                        // reservationData, çekilen belgenin verilerini içerir
+                        let email = reservationData["email"] as? String ?? ""
+                        let number = reservationData["number"] as? String ?? ""
+                        let session = reservationData["session"] as? String ?? ""
+                        let date = reservationData["date"] as? Timestamp
+
+                        // Doğru email bilgisine sahip belgeleri işle
+                        if email == email {
+                           
+                            if let date = date {
+                                let timestamp = date.dateValue()
+                                let reservation = ReservationModel(session: session, date: date, number:number , email: email)
+                                self.reservations.append(reservation)
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
     }
 
 
+    
+    
 }
 
 
