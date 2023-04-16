@@ -155,7 +155,36 @@ class denemeViewModel: ObservableObject {
         }
     }
 
+    
+    func deleteReservationsForEmail(email: String) {
+        let db = Firestore.firestore()
+        let collectionRef = db.collection("Reservations") // Koleksiyon adınızı buraya girin
 
+        // E-posta adresine ait rezervasyonları sorgulayın
+        collectionRef.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Hata: \(error.localizedDescription)")
+                return
+            }
+
+            guard let documents = querySnapshot?.documents else {
+                print("Belge bulunamadı")
+                return
+            }
+
+            for document in documents {
+                // Her rezervasyonu silin
+                collectionRef.document(document.documentID).delete { error in
+                    if let error = error {
+                        print("Hata: \(error.localizedDescription)")
+                    } else {
+                        print("Rezervasyon silindi")
+                    }
+                }
+            }
+        }
+       
+    }
     
     
 }

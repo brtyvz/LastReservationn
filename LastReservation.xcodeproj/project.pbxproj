@@ -30,7 +30,6 @@
 		5B654C6029A558360053A850 /* NewMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C5F29A558360053A850 /* NewMainMenu.swift */; };
 		5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */; };
 		5B654C6429A767FC0053A850 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6329A767FC0053A850 /* DayModel.swift */; };
-		5B6ADE3D29B270EF00DC8F65 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6ADE3C29B270EF00DC8F65 /* ReservationView.swift */; };
 		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
@@ -71,7 +70,6 @@
 		5B654C5F29A558360053A850 /* NewMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenu.swift; sourceTree = "<group>"; };
 		5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenuViewModel.swift; sourceTree = "<group>"; };
 		5B654C6329A767FC0053A850 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
-		5B6ADE3C29B270EF00DC8F65 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
 		5B74909829539626007F67ED /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 		5B6ADE3B29B270D600DC8F65 /* Reservation */ = {
 			isa = PBXGroup;
 			children = (
-				5B6ADE3C29B270EF00DC8F65 /* ReservationView.swift */,
 				5B460E5629B3377F0047EB6A /* ReservationModel.swift */,
 				5B57166E29BB538D0045C26E /* File.swift */,
 				5BD422A429EB0A27000E3DC3 /* ReservationsView.swift */,
@@ -421,7 +418,6 @@
 				5B791A3C299A7DE9006EC79B /* CalendarMainView.swift in Sources */,
 				5B57166F29BB538D0045C26E /* File.swift in Sources */,
 				5B4A2ED1294DDB4400A9AD4A /* LoginView.swift in Sources */,
-				5B6ADE3D29B270EF00DC8F65 /* ReservationView.swift in Sources */,
 				5B8499C329982E5A009BA70E /* Date.swift in Sources */,
 				5B4A2EBD294DD7B200A9AD4A /* ContentView.swift in Sources */,
 				5BD61731295475680022C98E /* SideMenuView.swift in Sources */,

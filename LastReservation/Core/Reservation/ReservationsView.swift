@@ -12,18 +12,42 @@ struct ReservationsView: View {
     @StateObject var viewModel = denemeViewModel()
     
     var body: some View {
-        VStack{
-            ForEach(viewModel.reservations,id:\.self) { reservation in
-                Text(reservation.email)
-                Text(reservation.session)
-                Text(formatDate(date:reservation.date.dateValue()))
-                Text(reservation.number)
-            }
+        
+        VStack(spacing:40) {
+                ForEach(viewModel.reservations) { reservation in
+                        HStack(alignment: .center,spacing: 10) {
+                            Text(formatDate(date:reservation.date.dateValue()))
+                                .bold()
+                                .font(.title2)
+                                .foregroundColor(.purple.opacity(0.5))
+                            Text("Session: \(reservation.session)")
+                                .bold()
+                                .font(.title2)
+                            Button(action: {
+                                // Rezervasyonu silme butonu
+                                if let user = authViewModel.currentUser {
+                                    viewModel.deleteReservationsForEmail(email: user.email)
+                                }
+                                
+                            }) {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.red)
+                            }
+                        }.background(
+                        Capsule()
+                            .fill(.blue.opacity(0.2))
+                            .frame(width: 400, height: 50, alignment: .center)
+                        )
+                    
+                }
+                .navigationBarTitle("Reservations")
+                Spacer()
             
-        }.onAppear{ if let user = authViewModel.currentUser {
+               }.onAppear{ if let user = authViewModel.currentUser {
             viewModel.fetchReservationFromFirestore(email: user.email)
         }}
-       
+        
+               .padding(.top,40)
     }
 }
 

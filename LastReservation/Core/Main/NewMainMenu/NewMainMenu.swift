@@ -25,7 +25,7 @@ struct NewMainMenu: View {
                             .padding()
                             .background(
                                 Capsule()
-                                    .fill(selectedDay == day ? Color.black.opacity(0.6) : Color.black.opacity(0.9))
+                                    .fill(selectedDay == day ? Color.black.opacity(0.5) : Color.black.opacity(0.8))
                                     .overlay(
                                         Text(day.date.dateValue(), style: .date)
                                             .foregroundColor(.white)

@@ -9,7 +9,6 @@ import SwiftUI
 import Firebase
 import UIKit
 
-
 @main
 struct LastReservationApp: App {
     @StateObject var viewModel = AuthViewModel()
