@@ -26,7 +26,7 @@ struct ReservationsView: View {
                             Button(action: {
                                 // Rezervasyonu silme butonu
                                 if let user = authViewModel.currentUser {
-                                    viewModel.deleteReservationsForEmail(email: user.email)
+                                    viewModel.deleteReservationsForEmail(resDelete: reservation)
                                 }
                                 
                             }) {

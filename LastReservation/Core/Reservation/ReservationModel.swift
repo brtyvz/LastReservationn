@@ -10,6 +10,7 @@ import Firebase
 
 struct ReservationModel:Identifiable,Decodable,Hashable{
     var id = UUID().uuidString
+    var firestorID : String
     var session:String
     var date:Timestamp
     var number:String

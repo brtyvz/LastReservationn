@@ -35,25 +35,25 @@ class NewMainMenuViewModel:ObservableObject{
     
     init(){
         fetchCurrentWeek()
-        filterTodayTasks()
+//        filterTodayTasks()
         
        
     }
-    
-    func filterTodayTasks(){
-        DispatchQueue.global(qos: .userInteractive).async {
-            let calendar = Calendar.current
-            
-            let filtered = self.storedDays.filter{
-                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
-            }
-            DispatchQueue.main.async {
-                withAnimation{
-                    self.filteredDays = filtered
-                }
-            }
-        }
-    }
+//
+//    func filterTodayTasks(){
+//        DispatchQueue.global(qos: .userInteractive).async {
+//            let calendar = Calendar.current
+//
+//            let filtered = self.storedDays.filter{
+//                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
+//            }
+//            DispatchQueue.main.async {
+//                withAnimation{
+//                    self.filteredDays = filtered
+//                }
+//            }
+//        }
+//    }
     
     
    

@@ -6,10 +6,11 @@
 //
 
 import Foundation
-
+import FirebaseFirestore
 struct DayModel:Identifiable,Decodable{
     var id = UUID().uuidString
     var hour:String
     var capacity:String
-    var taskDate:Date
+    var taskDate:Timestamp
+    var firestorID : String
 }

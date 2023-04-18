@@ -13,6 +13,7 @@ struct Days: Identifiable, Equatable, Hashable {
     var id = UUID().uuidString
     var date: Timestamp
     var sessions: [String: Sessions]
+
     var db = Firestore.firestore() // Firestore veritabanı referansı
     
     
@@ -63,8 +64,6 @@ class denemeViewModel: ObservableObject {
 
         return filledDays
     }
-    
-    
 
     func fetchDays(startOfWeek: Date, endOfWeek: Date, completion: @escaping (Result<[Days], Error>) -> Void) {
         let db = Firestore.firestore()
@@ -144,7 +143,7 @@ class denemeViewModel: ObservableObject {
                            
                             if let date = date {
                                 let timestamp = date.dateValue()
-                                let reservation = ReservationModel(session: session, date: date, number:number , email: email)
+                                let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email)
                                 self.reservations.append(reservation)
                             }
                         }
@@ -156,35 +155,26 @@ class denemeViewModel: ObservableObject {
     }
 
     
-    func deleteReservationsForEmail(email: String) {
+    func deleteReservationsForEmail(resDelete: ReservationModel) {
         let db = Firestore.firestore()
-        let collectionRef = db.collection("Reservations") // Koleksiyon adınızı buraya girin
-
-        // E-posta adresine ait rezervasyonları sorgulayın
-        collectionRef.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Hata: \(error.localizedDescription)")
-                return
-            }
-
-            guard let documents = querySnapshot?.documents else {
-                print("Belge bulunamadı")
-                return
-            }
-
-            for document in documents {
-                // Her rezervasyonu silin
-                collectionRef.document(document.documentID).delete { error in
-                    if let error = error {
-                        print("Hata: \(error.localizedDescription)")
-                    } else {
-                        print("Rezervasyon silindi")
+        
+        
+        db.collection("Reservations").document(resDelete.firestorID).delete{ error in
+            
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.reservations.removeAll{ res in
+                        return res.firestorID == resDelete.firestorID
                     }
                 }
             }
+            
         }
+
        
     }
+    
+  
     
     
 }
