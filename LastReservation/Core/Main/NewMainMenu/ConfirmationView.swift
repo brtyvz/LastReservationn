@@ -46,7 +46,10 @@ struct ConfirmationView: View {
                 HStack {
                     Button(action: {
                         // Onaylama işlemi
-                      updateCapacity(selectedDay: selectedDay!, selectedSession: selectedSession!)
+                        if let user = authViewModel.currentUser {
+                            updateCapacity(selectedDay: selectedDay!, selectedSession: selectedSession!, email: user.email)
+                        }
+                        
                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             showConfirmation = false
@@ -87,7 +90,13 @@ struct ConfirmationView: View {
     }
     
         
-    func updateCapacity(selectedDay: Days?, selectedSession: String) {
+    func updateCapacity(selectedDay: Days?, selectedSession: String,email: String) {
+        checkIfUserAlreadyRegistered(email: email) { isRegistered in
+            if isRegistered {
+                self.showingAlert = true
+                self.reservationBool = true
+            }
+            else {
         if let selectedDay = selectedDay {
             // Seçili günün timestamp değerini al
             let timestamp = selectedDay.date
@@ -145,6 +154,8 @@ struct ConfirmationView: View {
                 }
             }
         }
+            }
+        }
     }
 
     
@@ -179,7 +190,6 @@ struct ConfirmationView: View {
             if isRegistered {
                 self.showingAlert = true
                 self.reservationBool = true
-                
             } else {
                 // Kullanıcı daha önce kayıt yaptırmamış, kayıt işlemini gerçekleştir
                 let timestamp = selectedDay?.date
@@ -203,14 +213,12 @@ struct ConfirmationView: View {
                     } else {
                         // Başarılı kaydetme durumunu işle
                         print("Firestore kaydetme başarılı!")
-                     
-                        updateCapacity(selectedDay: selectedDay!, selectedSession: selectedSession!)
-            
                     }
                 }
             }
         }
     }
+
 
 
 

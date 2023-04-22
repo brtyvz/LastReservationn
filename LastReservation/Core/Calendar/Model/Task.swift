@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
+
 
 struct Task: Identifiable{
+    
     var id = UUID().uuidString
     var title:String
     var time:Date = Date()
@@ -44,3 +48,6 @@ var tasks: [TaskMetaData] = [
     Task(title: "middle🦹‍♀️ Task")
     ], taskDate: getSampleData(offset: -8)),
 ]
+
+
+
