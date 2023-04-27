@@ -1,13 +1,54 @@
 import SwiftUI
+import FirebaseFirestore
+import Firebase
 
 struct ItemCheckboxView: View {
     @State private var selectedItems: [String] = []
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State private var selectedItemCount = 0
+    let items = ["Computer 1", "Computer 2", "Computer 3", "Computer 4", "Computer 5", "Computer 6", "Computer 7", "Computer 8", "Computer 9", "Computer 10"]
     
-    let items = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10"]
+    func itemSelected(itemName: String) {
+          if selectedItemCount < 3 {
+              selectedItems.append(itemName)
+              selectedItemCount += 1
+          }
+      }
     
+    
+    func addItemsToReservation(email: String, items: [String]) {
+        let db = Firestore.firestore()
+        
+        // Rezervasyonlar koleksiyonundaki belgelere sorgu yaparak, eşleşen belgeyi buluyoruz
+        db.collection("Reservations").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching reservations: \(error)")
+                return
+            }
+            
+            guard let document = querySnapshot?.documents.first else {
+                print("No matching reservations found")
+                return
+            }
+            
+            // Eşleşen belgeyi bulduktan sonra, belgeye itemleri ekleyebiliriz
+            let reservationRef = db.collection("Reservations").document(document.documentID)
+            reservationRef.updateData(["selectedItems": FieldValue.arrayUnion(items)]) { error in
+                if let error = error {
+                    print("Error updating reservation: \(error)")
+                } else {
+                    print("Items added to reservation successfully")
+                }
+            }
+        }
+    }
+
+
+
+
     var body: some View {
         VStack {
-            Text("Items")
+            Text("İtemler")
                 .font(.title)
                 .padding()
             Divider()
@@ -23,7 +64,7 @@ struct ItemCheckboxView: View {
                                 if let index = selectedItems.firstIndex(of: item) {
                                     selectedItems.remove(at: index)
                                 } else {
-                                    selectedItems.append(item)
+                                    itemSelected(itemName: item)
                                 }
                             }
                     }
@@ -32,9 +73,12 @@ struct ItemCheckboxView: View {
             }
             HStack {
                 Button(action: {
-                    print("Confirm tapped")
+                    if let user = authViewModel.currentUser {
+                        addItemsToReservation(email: user.email, items: selectedItems)
+                    }
+
                 }, label: {
-                    Text("Confirm")
+                    Text("Onayla")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding()
@@ -43,9 +87,10 @@ struct ItemCheckboxView: View {
                 })
                 Spacer()
                 Button(action: {
-                    print("Cancel tapped")
+                    selectedItems = []
+                        selectedItemCount = 0
                 }, label: {
-                    Text("Cancel")
+                    Text("İptal")
                         .font(.title)
                         .foregroundColor(.white)
                         .padding()
@@ -55,6 +100,7 @@ struct ItemCheckboxView: View {
             }
             .padding()
         }
+        .padding()
     }
 }
 

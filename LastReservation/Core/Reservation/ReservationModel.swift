@@ -15,4 +15,5 @@ struct ReservationModel:Identifiable,Decodable,Hashable{
     var date:Timestamp
     var number:String
     var email:String
+    var selectedItems:[String]
 }

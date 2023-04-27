@@ -137,14 +137,15 @@ class denemeViewModel: ObservableObject {
                         let number = reservationData["number"] as? String ?? ""
                         let session = reservationData["session"] as? String ?? ""
                         let date = reservationData["date"] as? Timestamp
-
+                   let items = reservationData["selectedItems"] as? [String] ?? [""]
                         // Doğru email bilgisine sahip belgeleri işle
                         if email == email {
                            
                             if let date = date {
                                 let timestamp = date.dateValue()
-                                let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email)
+                                let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email, selectedItems: items)
                                 self.reservations.append(reservation)
+                                print(reservation.selectedItems)
                             }
                         }
                         
@@ -153,6 +154,11 @@ class denemeViewModel: ObservableObject {
             }
         }
     }
+    
+    
+    
+    
+    
 
     
     func deleteReservationsForEmail(resDelete: ReservationModel) {

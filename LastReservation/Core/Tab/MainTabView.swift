@@ -28,13 +28,21 @@ struct MainTabView: View {
                     Image(systemName: "calendar")
                 }.tag(1)
             
-            SettingView()
+            ItemCheckboxView()
                 .onTapGesture {
                     self.selectedIndex = 2
                 }
                 .tabItem {
-                    Image(systemName: "gear")
+                    Image(systemName: "checkmark.circle.fill")
                 }.tag(2)
+            
+            SettingView()
+                .onTapGesture {
+                    self.selectedIndex = 3
+                }
+                .tabItem {
+                    Image(systemName: "gear")
+                }.tag(3)
                 
         }
     }

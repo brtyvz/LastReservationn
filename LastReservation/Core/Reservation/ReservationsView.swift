@@ -14,41 +14,69 @@ struct ReservationsView: View {
     
     var body: some View {
         
-        VStack(spacing:40) {
-                ForEach(viewModel.reservations) { reservation in
-                        HStack(alignment: .center,spacing: 10) {
-                            Text(formatDate(date:reservation.date.dateValue()))
-                                .bold()
-                                .font(.title2)
-                                .foregroundColor(.purple.opacity(0.5))
-                            Text("Session: \(reservation.session)")
-                                .bold()
-                                .font(.title2)
-                            Button(action: {
-                                // Rezervasyonu silme butonu
-                                if let user = authViewModel.currentUser {
-                                    viewModel.deleteReservationsForEmail(resDelete: reservation)
+        if let user = authViewModel.currentUser {
+            
+            
+            VStack(spacing:40) {
+                    ForEach(viewModel.reservations) { reservation in
+                            HStack(alignment: .center,spacing: 10) {
+                            
+
+                                Text(formatDate(date:reservation.date.dateValue()))
+                                    .bold()
+                                    .font(.title2)
+                                    .foregroundColor(.purple.opacity(0.5))
+                                Text("Session: \(reservation.session)")
+                               
+                                    .bold()
+                                    .font(.title2)
+                                Button(action: {
+                                    // Rezervasyonu silme butonu
+                                    if let user = authViewModel.currentUser {
+                                        viewModel.deleteReservationsForEmail(resDelete: reservation)
+                                    }
+                                    
+                                }) {
+                                    Image(systemName: "multiply.circle.fill").font(.title)
+                                        
+                                        .foregroundColor(.red)
                                 }
-                                
-                            }) {
-                                Image(systemName: "multiply.circle.fill")
-                                    .foregroundColor(.red)
+                            }.background(
+                            Capsule()
+                                .fill(.blue.opacity(0.2))
+                                .frame(width: 400, height: 80, alignment: .center)
+                            )
+                        VStack{
+                            Text("İtems").font(.title3)
+                            ForEach(reservation.selectedItems, id: \.self) { item in
+                                Text("\(item)")
                             }
                         }.background(
-                        Capsule()
-                            .fill(.blue.opacity(0.2))
-                            .frame(width: 400, height: 50, alignment: .center)
+                            Capsule()
+                                .fill(.blue.opacity(0.2))
+                                .frame(width: 400, height: 80, alignment: .center)
                         )
-                    
-                }
-                .navigationBarTitle("Reservations")
-                Spacer()
+                        .padding()
+                      
+                        
+                    }
+                    .navigationBarTitle("Reservations")
+                    Spacer()
+                
+                   }.onAppear{ if let user = authViewModel.currentUser {
+                viewModel.fetchReservationFromFirestore(email: user.email)
+            }}
             
-               }.onAppear{ if let user = authViewModel.currentUser {
-            viewModel.fetchReservationFromFirestore(email: user.email)
-        }}
+                   .padding(.top,40)
+            
+        }
         
-               .padding(.top,40)
+        else {
+            VStack {
+                Text("Rzervasyonunuz Yok")
+            }
+        }
+      
     }
 }
 
