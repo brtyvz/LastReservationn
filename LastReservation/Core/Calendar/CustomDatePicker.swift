@@ -78,7 +78,7 @@ struct CustomDatePicker: View {
                 .frame(maxWidth: .infinity,alignment: .leading)
                 .padding(.vertical,20)
             
-            if let task = tasks.first(where: { task in
+            if let task = TaskManager.tasks.first(where: { task in
                 return isSameDay(date1: task.taskDate, date2: currentDate)
             }){
                 ForEach(task.task){ task in
@@ -115,7 +115,7 @@ struct CustomDatePicker: View {
     func CardView(value:DateValue) -> some View{
         VStack{
             if value.day != -1{
-                if let task = tasks.first(where: { task in
+                if let task = TaskManager.tasks.first(where: { task in
                     
                     return isSameDay(date1:task.taskDate, date2:value.date)
                     

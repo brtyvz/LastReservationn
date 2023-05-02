@@ -45,6 +45,8 @@ struct Days: Identifiable, Equatable, Hashable {
 
 class denemeViewModel: ObservableObject {
     @Published var reservations:[ReservationModel] = []
+    @Published var mail:String = ""
+    
     
     func fillMissingDays(_ days: [Days]) -> [Days] {
         var filledDays = [Days]()
@@ -146,6 +148,11 @@ class denemeViewModel: ObservableObject {
                                 let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email, selectedItems: items)
                                 self.reservations.append(reservation)
                                 print(reservation.selectedItems)
+                                
+                                DispatchQueue.main.async {
+                                    self.mail = email
+                                }
+                                
                             }
                         }
                         
@@ -184,104 +191,3 @@ class denemeViewModel: ObservableObject {
     
     
 }
-
-
-// çalışıyor üstteki vm ile
-
-//@StateObject var viewModel = denemeViewModel()
-//  @State private var days = [Days]()
-//
-//  var body: some View {
-//      ScrollView(.horizontal) {
-//          HStack {
-//              ForEach(days) { day in
-//                  VStack {
-//                      Text(day.date, style: .date)
-//                      Divider()
-//                      ForEach(day.sessions.sorted(by: {$0.key < $1.key}), id: \.key) { key, value in
-//                          HStack {
-//                              Text(key)
-//                              Spacer()
-//                              Text("\(value.capacity)")
-//                          }
-//                          .padding(.horizontal)
-//                      }
-//                  }
-//                  .padding()
-//                  .background(Color.gray.opacity(0.1))
-//                  .cornerRadius(8)
-//                  .padding(.vertical)
-//              }
-//          }
-//      }
-//      .onAppear {
-//          viewModel.fetchDays { result in
-//              switch result {
-//              case .success(let days):
-//                  self.days = days
-//              case .failure(let error):
-//                  print(error)
-//              }
-//          }
-//      }
-//  }
-
-
-
-
-
-
-
-
-
-//import SwiftUI
-//import Firebase
-//
-//struct NewMainMenu: View {
-//    @StateObject var viewModel = denemeViewModel()
-//    @State private var days = [Days]()
-//    @State private var currentDate = Date()
-//
-//    var body: some View {
-//        ScrollView(.horizontal) {
-//            HStack {
-//                ForEach(days) { day in
-//                    VStack {
-//                        Text(day.date.dateValue(), style: .date)
-//                        Divider()
-//                        ForEach(day.sessions.sorted(by: { $0.key < $1.key }), id: \.key) { key, value in
-//                            HStack {
-//                                Text(key)
-//                                Spacer()
-//                                Text("\(value.capacity)")
-//                            }
-//                            .padding(.horizontal)
-//                        }
-//                    }
-//                    .padding()
-//                    .background(Color.gray.opacity(0.1))
-//                    .cornerRadius(8)
-//                    .padding(.vertical)
-//                }
-//            }
-//        }
-//        .onAppear {
-//            fetchCurrentWeekDays()
-//        }
-//    }
-//
-//    // Firestore'dan şu an bulunduğumuz haftanın günlerini çeken fonksiyon
-//    func fetchCurrentWeekDays() {
-//        let startOfWeek = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: currentDate))!
-//        let endOfWeek = Calendar.current.date(byAdding: .day, value: 6, to: startOfWeek)!
-//        
-//        viewModel.fetchDays(startOfWeek: startOfWeek, endOfWeek: endOfWeek) { result in
-//            switch result {
-//            case .success(let days):
-//                self.days = days
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-//}

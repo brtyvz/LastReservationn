@@ -20,12 +20,12 @@ struct MainTabView: View {
                     Image(systemName: "house")
                 }.tag(0)
             
-            CalendarView()
+            CameraView()
                 .onTapGesture {
                     self.selectedIndex = 1
                 }
                 .tabItem {
-                    Image(systemName: "calendar")
+                    Image(systemName: "camera")
                 }.tag(1)
             
             ItemCheckboxView()

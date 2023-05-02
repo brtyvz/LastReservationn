@@ -31,6 +31,7 @@
 		5B654C6229A577E20053A850 /* NewMainMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */; };
 		5B654C6429A767FC0053A850 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6329A767FC0053A850 /* DayModel.swift */; };
 		5B692F8829F1E1F200F0D700 /* ItemCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B692F8729F1E1F200F0D700 /* ItemCheckboxView.swift */; };
+		5B692F8B29FEF70200F0D700 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B692F8A29FEF70200F0D700 /* CameraView.swift */; };
 		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
@@ -72,6 +73,8 @@
 		5B654C6129A577E20053A850 /* NewMainMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMainMenuViewModel.swift; sourceTree = "<group>"; };
 		5B654C6329A767FC0053A850 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		5B692F8729F1E1F200F0D700 /* ItemCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCheckboxView.swift; sourceTree = "<group>"; };
+		5B692F8A29FEF70200F0D700 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		5B692F8C29FFBCD800F0D700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5B74909829539626007F67ED /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		5B4A2EB9294DD7B100A9AD4A /* LastReservation */ = {
 			isa = PBXGroup;
 			children = (
+				5B692F8C29FFBCD800F0D700 /* Info.plist */,
 				5B0CBED829BF2A9600504BC4 /* Notlar */,
 				5B4A2ECB294DD7D700A9AD4A /* Service */,
 				5B4A2ECA294DD7D400A9AD4A /* Model */,
@@ -173,6 +177,7 @@
 		5B4A2EC9294DD7D100A9AD4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5B692F8929FEF66300F0D700 /* Camera */,
 				5B6ADE3B29B270D600DC8F65 /* Reservation */,
 				5BD6172B295473E60022C98E /* SideMenu */,
 				5B7490A0295399E9007F67ED /* Calendar */,
@@ -250,6 +255,14 @@
 				5B692F8729F1E1F200F0D700 /* ItemCheckboxView.swift */,
 			);
 			path = NewMainMenu;
+			sourceTree = "<group>";
+		};
+		5B692F8929FEF66300F0D700 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				5B692F8A29FEF70200F0D700 /* CameraView.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		5B6ADE3B29B270D600DC8F65 /* Reservation */ = {
@@ -414,6 +427,7 @@
 				5BD4229D29E314EB000E3DC3 /* FirestoreSessions.swift in Sources */,
 				5B16C77E29855BF30083D7CE /* SideMenuVİewModel.swift in Sources */,
 				5B7490A229539B1D007F67ED /* CalendarView.swift in Sources */,
+				5B692F8B29FEF70200F0D700 /* CameraView.swift in Sources */,
 				5B0CBEDA29BF2AA300504BC4 /* FileLast.swift in Sources */,
 				5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */,
 				5B791A3A299913F8006EC79B /* IndexView.swift in Sources */,
@@ -571,6 +585,9 @@
 				DEVELOPMENT_TEAM = 4SJ82Z4WX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LastReservation/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -600,6 +617,9 @@
 				DEVELOPMENT_TEAM = 4SJ82Z4WX2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LastReservation/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
