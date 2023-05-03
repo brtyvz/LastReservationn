@@ -40,7 +40,12 @@ struct CameraView: View {
                         
                         Button(action:
                                 {
-                            if !camera.isSaved{camera.savePic()}},
+                            if let user = authViewModel.currentUser {
+                                
+                                if !camera.isSaved{camera.savePic(email: user.email)}
+                                
+                            }
+                           },
                                label: {
                             Text(camera.isSaved ? "Saved" : "Save")
                                 .foregroundColor(.black)
@@ -156,7 +161,7 @@ class CameraModel:NSObject,ObservableObject,AVCapturePhotoCaptureDelegate {
             DispatchQueue.main.async {
                 withAnimation{self.isTaken.toggle()}
             }
-            self.session.stopRunning()
+            DispatchQueue.main.async { Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in self.session.stopRunning() } }
         }
     }
     
@@ -172,12 +177,15 @@ class CameraModel:NSObject,ObservableObject,AVCapturePhotoCaptureDelegate {
         }
     }
     
-    func saveImageForReservation(email: String, image: UIImage) {
+    
+    
+
+    func saveImageToFirestore(image: UIImage, email: String) {
         let db = Firestore.firestore()
         let storageRef = Storage.storage().reference()
-        let imageName = UUID().uuidString+".jpg"
+        let imageName = UUID().uuidString + ".jpg"
         let imagesRef = storageRef.child("images/\(imageName)")
-
+        
         if let imageData = image.jpegData(compressionQuality: 0.5) {
             let uploadTask = imagesRef.putData(imageData, metadata: nil) { metadata, error in
                 guard let metadata = metadata else {
@@ -186,29 +194,38 @@ class CameraModel:NSObject,ObservableObject,AVCapturePhotoCaptureDelegate {
                 }
                 let size = metadata.size
                 print("Image uploaded: \(size) bytes")
-
-                // Firestore'a kaydedilecek olan image url'sini almak için
-                imagesRef.downloadURL { url, error in
-                    guard let downloadURL = url else {
-                        print("Error getting download URL: \(error)")
+                
+                // Firestore'da kullanıcının rezervasyonunu kontrol ediyoruz
+                db.collection("Reservations").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+                    guard let documents = querySnapshot?.documents else {
+                        print("Error getting reservation documents: \(error)")
                         return
                     }
-                    db.collection("Reservations").whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
-                        guard let snapshot = querySnapshot else {
-                            print("Error getting documents: \(error)")
-                            return
+                    
+                    // Eğer kullanıcının bir rezervasyonu varsa, fotoğrafı bu rezervasyona ekliyoruz
+                    if let reservationDoc = documents.first {
+                        let reservationId = reservationDoc.documentID
+                        let dataToSave: [String: Any] = ["imageUrl": metadata.path ?? ""]
+                        db.collection("Reservations").document(reservationId).updateData(dataToSave) { error in
+                            if let error = error {
+                                print("Error saving image URL to reservation document: \(error)")
+                            } else {
+                                print("Image URL saved successfully to reservation document")
+                            }
                         }
-                        if snapshot.documents.count > 0 {
-                            let document = snapshot.documents[0]
-                            let reservationId = document.documentID
-                            let dataToSave: [String: Any] = ["imageUrl": downloadURL.absoluteString]
-                            db.collection("Reservations").document(reservationId).setData(dataToSave, merge: true)
-                        }
+                    } else {
+                        print("User doesn't have any reservations")
                     }
                 }
             }
+            // Yükleme işlemi tamamlanana kadar bekleniyor.
+            uploadTask.observe(.success) { snapshot in
+                print("Upload completed successfully")
+            }
         }
     }
+
+
 
 
     
@@ -224,12 +241,14 @@ class CameraModel:NSObject,ObservableObject,AVCapturePhotoCaptureDelegate {
         
         self.picData = imageData
     }
-    func savePic(){
+    func savePic(email:String){
         let image = UIImage(data: self.picData)!
         
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        saveImageForReservation(email: "Deneme@gmail.com", image: image)
+       
+            saveImageToFirestore(image: image, email: email)
         
+       
         self.isSaved = true
         print("saved succesfully")
     }
@@ -262,12 +281,8 @@ struct CameraPreview: UIViewRepresentable {
 
 
 
-
-//func saveImageForReservation(email: String) {
-//    guard let image = UIImage(data: self.picData) else {
-//        return
-//    }
 //
+//func saveImageToFirestore(image: UIImage) {
 //    let db = Firestore.firestore()
 //    let storageRef = Storage.storage().reference()
 //    let imageName = UUID().uuidString + ".jpg"
@@ -288,29 +303,21 @@ struct CameraPreview: UIViewRepresentable {
 //                    print("Error getting download URL: \(error)")
 //                    return
 //                }
-//                db.collection("Reservations")
-//                    .whereField("email", isEqualTo: email)
-//                    .getDocuments { (querySnapshot, error) in
-//                    guard let snapshot = querySnapshot else {
-//                        print("Error getting documents: \(error)")
-//                        return
-//                    }
-//                    if snapshot.documents.count > 0 {
-//                        let document = snapshot.documents[0]
-//                        let reservationId = document.documentID
-//                        let dataToSave: [String: Any] = ["imageUrl": downloadURL.absoluteString]
-//                        db.collection("Reservations")
-//                            .document(reservationId)
-//                            .setData(dataToSave, merge: true) { error in
-//                                if let error = error {
-//                                    print("Error saving image url: \(error)")
-//                                    return
-//                                }
-//                                print("Image url saved successfully")
-//                            }
+//
+//                // Firestore'a image dökümanı oluşturuluyor
+//                let dataToSave: [String: Any] = ["imageUrl": downloadURL.absoluteString]
+//                db.collection("Images").addDocument(data: dataToSave) { error in
+//                    if let error = error {
+//                        print("Error saving image document: \(error)")
+//                    } else {
+//                        print("Image document saved successfully")
 //                    }
 //                }
 //            }
+//        }
+//        // Yükleme işlemi tamamlanana kadar bekleniyor.
+//        uploadTask.observe(.success) { snapshot in
+//            print("Upload completed successfully")
 //        }
 //    }
 //}

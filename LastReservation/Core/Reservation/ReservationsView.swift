@@ -57,7 +57,9 @@ struct ReservationsView: View {
                                 .frame(width: 400, height: 80, alignment: .center)
                         )
                         .padding()
-                      
+                        VStack{
+                            
+                        }
                         
                     }
                     .navigationBarTitle("Reservations")

@@ -8,6 +8,8 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
+import FirebaseStorage
+import UIKit
 
 struct Days: Identifiable, Equatable, Hashable {
     var id = UUID().uuidString
@@ -116,6 +118,12 @@ class denemeViewModel: ObservableObject {
         }
       
     }
+    
+    
+    
+
+    
+    
 
     func fetchReservationFromFirestore(email: String) {
         let db = Firestore.firestore()
