@@ -8,8 +8,6 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
-import FirebaseStorage
-import UIKit
 
 struct Days: Identifiable, Equatable, Hashable {
     var id = UUID().uuidString
@@ -120,10 +118,6 @@ class denemeViewModel: ObservableObject {
     }
     
     
-    
-
-    
-    
 
     func fetchReservationFromFirestore(email: String) {
         let db = Firestore.firestore()
@@ -148,12 +142,13 @@ class denemeViewModel: ObservableObject {
                         let session = reservationData["session"] as? String ?? ""
                         let date = reservationData["date"] as? Timestamp
                    let items = reservationData["selectedItems"] as? [String] ?? [""]
+                        let imageUrl = reservationData["imageUrl"] as? String ?? ""
                         // Doğru email bilgisine sahip belgeleri işle
                         if email == email {
                            
                             if let date = date {
                                 let timestamp = date.dateValue()
-                                let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email, selectedItems: items)
+                                let reservation = ReservationModel(firestorID: document.documentID, session: session, date: date, number:number , email: email, selectedItems: items,imageUrl: imageUrl)
                                 self.reservations.append(reservation)
                                 print(reservation.selectedItems)
                                 

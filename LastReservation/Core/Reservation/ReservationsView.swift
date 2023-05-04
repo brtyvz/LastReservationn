@@ -5,27 +5,35 @@
 //  Created by Berat Yavuz on 15.04.2023.
 //
 
+//
+//  ReservationsView.swift
+//  LastReservation
+//
+//  Created by Berat Yavuz on 15.04.2023.
+//
+
 import SwiftUI
 import Firebase
+import SDWebImageSwiftUI
+import FirebaseStorage
 
 struct ReservationsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     @StateObject var viewModel = denemeViewModel()
+    @State var url = "AB6CA8C7-995B-44D9-B846-0472F7A9F695.jpeg"
     
     var body: some View {
         
         if let user = authViewModel.currentUser {
             
-            
             VStack(spacing:40) {
                     ForEach(viewModel.reservations) { reservation in
                             HStack(alignment: .center,spacing: 10) {
                             
-
                                 Text(formatDate(date:reservation.date.dateValue()))
                                     .bold()
                                     .font(.title2)
-                                    .foregroundColor(.purple.opacity(0.5))
+                                    .foregroundColor(.purple.opacity(0.7))
                                 Text("Session: \(reservation.session)")
                                
                                     .bold()
@@ -47,27 +55,44 @@ struct ReservationsView: View {
                                 .frame(width: 400, height: 80, alignment: .center)
                             )
                         VStack{
-                            Text("İtems").font(.title3)
+                            Text("İtems").font(.title3).bold()
                             ForEach(reservation.selectedItems, id: \.self) { item in
-                                Text("\(item)")
+                                Text("\(item)").foregroundColor(Color.black.opacity(0.7)).bold()
                             }
                         }.background(
                             Capsule()
-                                .fill(.blue.opacity(0.2))
-                                .frame(width: 400, height: 80, alignment: .center)
+                                .fill(.pink.opacity(0.2))
+                                .frame(width: 400, height: 110, alignment: .center)
                         )
+                       
                         .padding()
-                        VStack{
-                            
-                        }
                         
+                        VStack {
+                          
+                            AnimatedImage(url: URL(string: url)!).resizable().frame(width: 400, height: 500).cornerRadius(30)
+                                    
+                            
+                            
+                        } .onAppear{
+                            let storage = Storage.storage().reference()
+                            storage.child("\(reservation.imageUrl)").downloadURL { (url,err) in
+                                if let err = err {
+                                    print(err.localizedDescription)
+                                } else if let url = url {
+                                    DispatchQueue.main.async {
+                                        self.url = url.absoluteString
+                                    }
+                                }
+                            }
+                        }
+                    
                     }
                     .navigationBarTitle("Reservations")
                     Spacer()
                 
-                   }.onAppear{ if let user = authViewModel.currentUser {
+                   }.onAppear{
                 viewModel.fetchReservationFromFirestore(email: user.email)
-            }}
+                       }
             
                    .padding(.top,40)
             
@@ -93,5 +118,11 @@ func formatDate(date: Date) -> String {
     dateFormatter.dateFormat = "dd/MM/yyyy"
     return dateFormatter.string(from: date)
 }
+
+
+
+
+
+
 
 

@@ -16,4 +16,6 @@ struct ReservationModel:Identifiable,Decodable,Hashable{
     var number:String
     var email:String
     var selectedItems:[String]
+    var imageUrl:String
+    
 }

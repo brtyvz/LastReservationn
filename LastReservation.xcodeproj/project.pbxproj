@@ -32,6 +32,8 @@
 		5B654C6429A767FC0053A850 /* DayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B654C6329A767FC0053A850 /* DayModel.swift */; };
 		5B692F8829F1E1F200F0D700 /* ItemCheckboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B692F8729F1E1F200F0D700 /* ItemCheckboxView.swift */; };
 		5B692F8B29FEF70200F0D700 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B692F8A29FEF70200F0D700 /* CameraView.swift */; };
+		5B692F8F2A02A07600F0D700 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B692F8E2A02A07600F0D700 /* SDWebImage */; };
+		5B692F922A02AC2D00F0D700 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B692F912A02AC2D00F0D700 /* SDWebImageSwiftUI */; };
 		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
@@ -99,10 +101,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B692F922A02AC2D00F0D700 /* SDWebImageSwiftUI in Frameworks */,
 				5B4A2EDA294E232800A9AD4A /* FirebaseAuth in Frameworks */,
 				5B4A2EE0294E232800A9AD4A /* FirebaseStorage in Frameworks */,
 				5B4A2EDC294E232800A9AD4A /* FirebaseFirestore in Frameworks */,
 				5B4A2EDE294E232800A9AD4A /* FirebaseFirestoreSwift in Frameworks */,
+				5B692F8F2A02A07600F0D700 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +364,8 @@
 				5B4A2EDB294E232800A9AD4A /* FirebaseFirestore */,
 				5B4A2EDD294E232800A9AD4A /* FirebaseFirestoreSwift */,
 				5B4A2EDF294E232800A9AD4A /* FirebaseStorage */,
+				5B692F8E2A02A07600F0D700 /* SDWebImage */,
+				5B692F912A02AC2D00F0D700 /* SDWebImageSwiftUI */,
 			);
 			productName = LastReservation;
 			productReference = 5B4A2EB7294DD7B100A9AD4A /* LastReservation.app */;
@@ -391,6 +397,8 @@
 			mainGroup = 5B4A2EAE294DD7B100A9AD4A;
 			packageReferences = (
 				5B4A2ED8294E232800A9AD4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				5B692F8D2A02A07600F0D700 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				5B692F902A02AC2D00F0D700 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 5B4A2EB8294DD7B100A9AD4A /* Products */;
 			projectDirPath = "";
@@ -670,6 +678,22 @@
 				kind = branch;
 			};
 		};
+		5B692F8D2A02A07600F0D700 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		5B692F902A02AC2D00F0D700 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -692,6 +716,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5B4A2ED8294E232800A9AD4A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		5B692F8E2A02A07600F0D700 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B692F8D2A02A07600F0D700 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		5B692F912A02AC2D00F0D700 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5B692F902A02AC2D00F0D700 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

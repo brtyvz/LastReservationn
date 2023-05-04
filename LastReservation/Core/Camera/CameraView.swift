@@ -183,8 +183,8 @@ class CameraModel:NSObject,ObservableObject,AVCapturePhotoCaptureDelegate {
     func saveImageToFirestore(image: UIImage, email: String) {
         let db = Firestore.firestore()
         let storageRef = Storage.storage().reference()
-        let imageName = UUID().uuidString + ".jpg"
-        let imagesRef = storageRef.child("images/\(imageName)")
+        let imageName = UUID().uuidString + ".jpeg"
+        let imagesRef = storageRef.child("\(imageName)")
         
         if let imageData = image.jpegData(compressionQuality: 0.5) {
             let uploadTask = imagesRef.putData(imageData, metadata: nil) { metadata, error in
