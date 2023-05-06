@@ -34,6 +34,7 @@
 		5B692F8B29FEF70200F0D700 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B692F8A29FEF70200F0D700 /* CameraView.swift */; };
 		5B692F8F2A02A07600F0D700 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 5B692F8E2A02A07600F0D700 /* SDWebImage */; };
 		5B692F922A02AC2D00F0D700 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5B692F912A02AC2D00F0D700 /* SDWebImageSwiftUI */; };
+		5B6F71B32A066D83007B99FE /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F71B22A066D83007B99FE /* SplashScreenView.swift */; };
 		5B74909929539626007F67ED /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909829539626007F67ED /* MainTabView.swift */; };
 		5B74909B295397CE007F67ED /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909A295397CE007F67ED /* MainMenuView.swift */; };
 		5B74909F295399E3007F67ED /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B74909E295399E3007F67ED /* SettingView.swift */; };
@@ -76,7 +77,7 @@
 		5B654C6329A767FC0053A850 /* DayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayModel.swift; sourceTree = "<group>"; };
 		5B692F8729F1E1F200F0D700 /* ItemCheckboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCheckboxView.swift; sourceTree = "<group>"; };
 		5B692F8A29FEF70200F0D700 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		5B692F8C29FFBCD800F0D700 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5B6F71B22A066D83007B99FE /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		5B74909829539626007F67ED /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5B74909A295397CE007F67ED /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		5B74909E295399E3007F67ED /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
@@ -148,7 +149,6 @@
 		5B4A2EB9294DD7B100A9AD4A /* LastReservation */ = {
 			isa = PBXGroup;
 			children = (
-				5B692F8C29FFBCD800F0D700 /* Info.plist */,
 				5B0CBED829BF2A9600504BC4 /* Notlar */,
 				5B4A2ECB294DD7D700A9AD4A /* Service */,
 				5B4A2ECA294DD7D400A9AD4A /* Model */,
@@ -181,6 +181,7 @@
 		5B4A2EC9294DD7D100A9AD4A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5B6F71B12A066D55007B99FE /* Splash */,
 				5B692F8929FEF66300F0D700 /* Camera */,
 				5B6ADE3B29B270D600DC8F65 /* Reservation */,
 				5BD6172B295473E60022C98E /* SideMenu */,
@@ -277,6 +278,14 @@
 				5BD422A429EB0A27000E3DC3 /* ReservationsView.swift */,
 			);
 			path = Reservation;
+			sourceTree = "<group>";
+		};
+		5B6F71B12A066D55007B99FE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5B6F71B22A066D83007B99FE /* SplashScreenView.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		5B749097295393F9007F67ED /* Tab */ = {
@@ -438,6 +447,7 @@
 				5B692F8B29FEF70200F0D700 /* CameraView.swift in Sources */,
 				5B0CBEDA29BF2AA300504BC4 /* FileLast.swift in Sources */,
 				5B791A3E299D8D84006EC79B /* CustomDatePicker.swift in Sources */,
+				5B6F71B32A066D83007B99FE /* SplashScreenView.swift in Sources */,
 				5B791A3A299913F8006EC79B /* IndexView.swift in Sources */,
 				5B460E5729B3377F0047EB6A /* ReservationModel.swift in Sources */,
 				5B791A3C299A7DE9006EC79B /* CalendarMainView.swift in Sources */,

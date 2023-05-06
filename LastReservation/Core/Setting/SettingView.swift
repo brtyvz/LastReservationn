@@ -15,7 +15,11 @@ struct SettingView: View {
                 Button {
                     viewModel.signOut()
                 } label: {
-                    Text("Çıkış Yap")
+                    HStack{
+                        Text("Çıkış Yap")
+                        Image(systemName:"power")
+                    }
+                  
                 }
                 if let user = viewModel.currentUser {
                     Text(user.email)

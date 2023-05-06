@@ -18,7 +18,7 @@ struct LastReservationApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                SplashScreenView()
                     
             }
             .environmentObject(viewModel)
