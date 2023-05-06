@@ -71,8 +71,8 @@ extension ContentView {
                             showMenu.toggle()
                         }
                     } label: {
-                     Circle()
-                            .frame(width: 32, height: 32)
+                        Image("logo").resizable().frame(width: 40, height: 40, alignment: .center)
+                            .cornerRadius(25)
                     }
                 }
                

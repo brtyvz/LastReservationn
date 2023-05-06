@@ -34,14 +34,14 @@ struct ReservationsView: View {
                 else {
                    
                     GeometryReader { geometry in
-                            VStack(spacing:40) {
+                            VStack(spacing:5) {
                                     ForEach(viewModel.reservations) { reservation in
                                             HStack(alignment: .center,spacing: 10) {
                                             
                                                 Text(formatDate(date:reservation.date.dateValue()))
                                                     .bold()
                                                     .font(.title2)
-                                                    .foregroundColor(.purple.opacity(0.7))
+                                                    .foregroundColor(.purple.opacity(0.8))
                                                 Text("Session: \(reservation.session)")
                                                
                                                     .bold()
@@ -63,7 +63,7 @@ struct ReservationsView: View {
                                                 .frame(width: 400, height: 80, alignment: .center)
                                             )
                                         VStack{
-                                            Text("İtems").font(.title3).bold()
+                                            Text("İtems").font(.title3).foregroundColor(.purple.opacity(0.7)).bold()
                                             ForEach(reservation.selectedItems, id: \.self) { item in
                                                 Text("\(item)").foregroundColor(Color.black.opacity(0.7)).bold()
                                             }
@@ -77,7 +77,7 @@ struct ReservationsView: View {
                                         
                                         VStack {
                                           
-                                            AnimatedImage(url: URL(string: url)!).resizable().frame(width: 350, height: 500).cornerRadius(30)
+                                            AnimatedImage(url: URL(string: url)!).resizable().frame(width: 350, height: 500).cornerRadius(20)
                                                     
                                             
                                         } .onAppear{

@@ -19,7 +19,7 @@ struct SideMenuView: View {
             if let user = authViewModel.currentUser {
                 VStack(alignment: .leading, spacing: 32) {
                 VStack(alignment: .leading) {
-                   Image(systemName: "person")
+                    Image(systemName: "person").font(.title2)
                     
                     VStack(alignment: .leading, spacing: 4) {
                         Text(user.email)
