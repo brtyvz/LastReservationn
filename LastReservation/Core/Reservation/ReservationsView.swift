@@ -118,9 +118,11 @@ struct ReservationsView: View {
                 Text("Rzervasyonunuz Yok")
             }
         }
-      
+        
+        }
+
     }
-}
+    
 
 struct ReservationsView_Previews: PreviewProvider {
     static var previews: some View {
@@ -133,6 +135,7 @@ func formatDate(date: Date) -> String {
     dateFormatter.dateFormat = "dd/MM/yyyy"
     return dateFormatter.string(from: date)
 }
+
 
 
 

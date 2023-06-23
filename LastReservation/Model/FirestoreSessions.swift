@@ -169,8 +169,6 @@ class denemeViewModel: ObservableObject {
     
     
     
-
-    
     func deleteReservationsForEmail(resDelete: ReservationModel) {
         let db = Firestore.firestore()
         

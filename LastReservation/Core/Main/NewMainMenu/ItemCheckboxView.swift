@@ -6,7 +6,7 @@ struct ItemCheckboxView: View {
     @State private var selectedItems: [String] = []
     @EnvironmentObject var authViewModel: AuthViewModel
     @State private var selectedItemCount = 0
-    let items = ["Computer 1", "Computer 2", "Computer 3", "Computer 4", "Computer 5", "Computer 6", "Computer 7", "Computer 8", "Computer 9", "Computer 10"]
+    let items = ["Bilgisayar 1", "Bilgisayar 2", "Bilgisayar 3", "Bilgisayar 4", "Bilgisayar 5", "Bilgisayar 6", "Bilgisayar 7", "Bilgisayar 8", "Bilgisayar 9", "Bilgisayar 10"]
     
     func itemSelected(itemName: String) {
           if selectedItemCount < 3 {
@@ -48,7 +48,7 @@ struct ItemCheckboxView: View {
 
     var body: some View {
         VStack {
-            Text("İtemler")
+            Text("Eşyalar")
                 .font(.title)
                 .padding()
             Divider()
@@ -82,7 +82,7 @@ struct ItemCheckboxView: View {
                         .font(.title)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.green)
+                        .background(Color.appTheme)
                         .cornerRadius(10)
                 })
                 Spacer()

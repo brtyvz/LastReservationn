@@ -8,6 +8,7 @@ struct NewMainMenu: View {
     @State private var currentDate = Date()
     @State private var selectedSession: String?
     @State private var showConfirmation = false
+    @EnvironmentObject var settings: SettingsViewModel
     
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct NewMainMenu: View {
                             .padding()
                             .background(
                                 Capsule()
-                                    .fill(selectedDay == day ? Color.black.opacity(0.5) : Color.black.opacity(0.8))
+                                    .fill(selectedDay == day ? Color.appTheme.opacity(0.5) : Color.appTheme.opacity(1.0))
                                     .overlay(
                                         Text(day.date.dateValue(), style: .date)
                                             .foregroundColor(.white)
@@ -53,7 +54,7 @@ struct NewMainMenu: View {
                             }) {
                                 HStack {
                                     VStack(alignment: .leading) { // Session ve capacity yazılarını alt alta ekledik
-                                        Text("Session")
+                                        Text("Seanslar")
                                             .font(.headline)
                                             .foregroundColor(.black) // Session yazısının rengini ayarla
                                         Text(key)
@@ -61,7 +62,7 @@ struct NewMainMenu: View {
                                             .foregroundColor(.black)
                                     }
                                     Spacer()
-                                    Text("Capacity")
+                                    Text("Kapasite")
                                         .font(.headline)
                                         .foregroundColor(.black) // Capacity yazısının rengini ayarla
                                     Text("\(value.capacity)")
@@ -72,7 +73,7 @@ struct NewMainMenu: View {
                                 .padding(.vertical, selectedSession == key ? 26 : 22) // Seçili session için ekstra padding uygula
                                 .background(
                                     Capsule()
-                                        .fill(selectedSession == key ? Color.purple.opacity(0.5) : Color.purple.opacity(0.2)) // Seçili session için arka plan rengini güncelle
+                                        .fill(selectedSession == key ? Color.appTheme.opacity(1.0) : Color.appTheme.opacity(0.8)) // Seçili session için arka plan rengini güncelle
                                 )
                             }
                             .buttonStyle(PlainButtonStyle()) // Session butonlarına basıldığında highlight efekti kaldır

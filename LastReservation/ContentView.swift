@@ -18,7 +18,7 @@ struct ContentView: View {
             if viewModel.userSession == nil {
                 LoginView()
             }
-         //user logged in
+            //user logged in
             else {
                 mainInterfaceView
             }
@@ -31,7 +31,7 @@ struct ContentView_Previews: PreviewProvider {
         NavigationView {
             ContentView()
         }
-       
+        
     }
 }
 
@@ -60,12 +60,11 @@ extension ContentView {
                 .offset(x: showMenu ? 0 : -300, y: 0)
                 .background(showMenu ? Color.white : Color.clear)
         }
-        .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 if let user = viewModel.currentUser {
-                   
+                    
                     Button {
                         withAnimation(.easeInOut) {
                             showMenu.toggle()
@@ -75,8 +74,6 @@ extension ContentView {
                             .cornerRadius(25)
                     }
                 }
-               
-                
             }
         }
         .onAppear {

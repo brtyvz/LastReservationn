@@ -12,6 +12,7 @@ import UIKit
 @main
 struct LastReservationApp: App {
     @StateObject var viewModel = AuthViewModel()
+    @StateObject var settingsViewModel = SettingsViewModel()
     init() {
         FirebaseApp.configure()
     }
@@ -21,6 +22,9 @@ struct LastReservationApp: App {
                 SplashScreenView()
                     
             }
+            .environmentObject(settingsViewModel)
+            .accentColor(settingsViewModel.appThemeColor)
+            .preferredColorScheme(settingsViewModel.theme)
             .environmentObject(viewModel)
         }
     }

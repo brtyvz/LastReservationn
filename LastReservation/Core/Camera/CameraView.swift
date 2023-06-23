@@ -267,7 +267,7 @@ struct CameraPreview: UIViewRepresentable {
     view.layer.addSublayer(camera.preview)
     
     // starting session
-    camera.session.startRunning()
+     camera.session.startRunning()
     return view
     }
     func updateUIView(_ uiView: UIView, context: Context) {

@@ -14,6 +14,8 @@ struct SplashScreenView: View {
     @State private var opacity = 0.5
     
     var body: some View {
+        
+        
         let welcomeText = UserDefaults.standard.string(forKey: UserDefaultsKeys.welcomeText.rawValue) ?? "Welcome!"
         
         if isActive {
@@ -21,25 +23,21 @@ struct SplashScreenView: View {
         }
         else {
             VStack {
-               Image(systemName: "hand.tap")
+                Image(systemName: "hand.tap")
                     .resizable()
-                    .frame(width: 100, height: 100, alignment: .center)
+                    .frame(width: 90, height: 90, alignment: .center)
                     .padding(.bottom,50)
-                    .foregroundColor(Color("Purple"))
-                
-                Text(welcomeText)
-                    .font(.system(size: 40))
-                    .bold()
-                    .foregroundColor(.black.opacity(0.80))
                     .scaleEffect(size)
-                    .opacity(opacity)
+                    .foregroundColor(Color.purple)
                     .onAppear{
-                        withAnimation(.easeIn(duration: 1.2)){
+                        withAnimation(.easeIn(duration: 0.9)){
                             self.size = 1.2
                             self.opacity = 1.0
                         }
                     }
+                
             }
+            
             .onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
                     withAnimation {
