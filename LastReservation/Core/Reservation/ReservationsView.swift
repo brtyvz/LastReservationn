@@ -42,7 +42,7 @@ struct ReservationsView: View {
                                                     .bold()
                                                     .font(.title2)
                                                     .foregroundColor(.purple.opacity(0.8))
-                                                Text("Session: \(reservation.session)")
+                                                Text("Seans: \(reservation.session)")
                                                
                                                     .bold()
                                                     .font(.title2)
@@ -63,7 +63,7 @@ struct ReservationsView: View {
                                                 .frame(width: 400, height: 80, alignment: .center)
                                             )
                                         VStack{
-                                            Text("İtems").font(.title3).foregroundColor(.purple.opacity(0.7)).bold()
+                                            Text("Eşyalar").font(.title3).foregroundColor(.purple.opacity(0.7)).bold()
                                             ForEach(reservation.selectedItems, id: \.self) { item in
                                                 Text("\(item)").foregroundColor(Color.black.opacity(0.7)).bold()
                                             }
@@ -94,7 +94,7 @@ struct ReservationsView: View {
                                         }
                                     
                                  
-                                    .navigationBarTitle("Reservations")
+                                    .navigationBarTitle("Rezervasyonlar")
                                     Spacer()
                                 
                                    }
